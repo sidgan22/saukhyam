@@ -64,188 +64,190 @@ class regState extends State<reg> {
     MediaQueryData l;
     l = MediaQuery.of(context);
     return Scaffold(
-      body: Form(
-          key: _formKey,
-          child: Stack(
-            children: <Widget>[
-              ListView(
-                children: <Widget>[
-                  Column(crossAxisAlignment: CrossAxisAlignment.start, children: <
-                      Widget>[
-                    Container(
-                      child: Stack(
-                        children: <Widget>[
-                          Container(
-                              color:Color(0xfff47444),
-                              height:MediaQuery.of(context).size.height/6,
-                              child: Image.asset('assets/sk.PNG')),
-
-                          Container(
-                            padding: EdgeInsets.only(
-                                left:40.0, top: l.size.height /5),
-                            child: Column(
-                              children: <Widget>[
-
-                                Text(
-                                  "Register",
-                                  style: TextStyle(
-                                      fontFamily: 'Montserrat',
-                                      letterSpacing: -3,
-                                      fontWeight: FontWeight.w300,
-                                      fontSize: l.size.height / 10,
-                                      color: Color(0xfff47444)),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                        padding: EdgeInsets.only(
-                            top: 30.0,
-                            left: l.size.height / 20,
-                            right: l.size.height / 20),
-                        child: Column(
+      body: SafeArea(
+        child: Form(
+            key: _formKey,
+            child: Stack(
+              children: <Widget>[
+                ListView(
+                  children: <Widget>[
+                    Column(crossAxisAlignment: CrossAxisAlignment.start, children: <
+                        Widget>[
+                      Container(
+                        child: Stack(
                           children: <Widget>[
-                            TextFormField(
-                              onSaved: (value)=>_email=value,
-                              validator: (val) {
-                                if(RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(val))
-                                {
-                                  return null;
-                                }
-                                else
-                                  return  'Enter a valid email!';
+                            Container(
+                                color:Color(0xfff47444),
+                                height:MediaQuery.of(context).size.height/6,
+                                child: Image.asset('assets/sk.PNG')),
 
-                              } ,
-                              controller: _emailController,
-                              decoration: InputDecoration(
-                                  contentPadding: new EdgeInsets.symmetric(vertical: 25.0, horizontal: 10.0),
-                                  border: OutlineInputBorder(borderSide: BorderSide(width: 2.0,color: Color(0xff228b22)), borderRadius: BorderRadius.circular(10.0),),
-                                  labelText: 'EMAIL',
-                                  labelStyle: TextStyle(
-                                      fontFamily: 'Montserrat',
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.grey),
-                                  focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(color: Colors.green))),
+                            Container(
+                              padding: EdgeInsets.only(
+                                  left:40.0, top: l.size.height /5),
+                              child: Column(
+                                children: <Widget>[
+
+                                  Text(
+                                    "Register",
+                                    style: TextStyle(
+                                        fontFamily: 'Montserrat',
+                                        letterSpacing: -3,
+                                        fontWeight: FontWeight.w300,
+                                        fontSize: l.size.height / 10,
+                                        color: Color(0xfff47444)),
+                                  ),
+                                ],
+                              ),
                             ),
-                            SizedBox(height: 12.0),
-                            SizedBox(height: 12.0),
-                            TextFormField(
+                          ],
+                        ),
+                      ),
+                      Container(
+                          padding: EdgeInsets.only(
+                              top: 30.0,
+                              left: l.size.height / 20,
+                              right: l.size.height / 20),
+                          child: Column(
+                            children: <Widget>[
+                              TextFormField(
+                                onSaved: (value)=>_email=value,
+                                validator: (val) {
+                                  if(RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(val))
+                                  {
+                                    return null;
+                                  }
+                                  else
+                                    return  'Enter a valid email!';
 
-                              onSaved: (value)=>_pass=value,
-                              validator: (val) => val.length < 6 ? 'Enter a pass atleast 6 characters!' : null,
-                              controller: _passController,
-                              obscureText: ob,
-                              decoration: InputDecoration(
-                                  contentPadding: new EdgeInsets.symmetric(vertical: 25.0, horizontal: 10.0),
-                                  border: OutlineInputBorder(borderSide: BorderSide(width: 2.0,color: Color(0xff228b22)), borderRadius: BorderRadius.circular(10.0),),
+                                } ,
+                                controller: _emailController,
+                                decoration: InputDecoration(
+                                    contentPadding: new EdgeInsets.symmetric(vertical: 25.0, horizontal: 10.0),
+                                    border: OutlineInputBorder(borderSide: BorderSide(width: 2.0,color: Color(0xff228b22)), borderRadius: BorderRadius.circular(10.0),),
+                                    labelText: 'EMAIL',
+                                    labelStyle: TextStyle(
+                                        fontFamily: 'Montserrat',
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.grey),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(color: Colors.green))),
+                              ),
+                              SizedBox(height: 12.0),
+                              SizedBox(height: 12.0),
+                              TextFormField(
 
-                                  suffixIcon: IconButton(disabledColor:Colors.grey,onPressed: (){setState(() {
-                                    ob=!ob;
+                                onSaved: (value)=>_pass=value,
+                                validator: (val) => val.length < 6 ? 'Enter a pass atleast 6 characters!' : null,
+                                controller: _passController,
+                                obscureText: ob,
+                                decoration: InputDecoration(
+                                    contentPadding: new EdgeInsets.symmetric(vertical: 25.0, horizontal: 10.0),
+                                    border: OutlineInputBorder(borderSide: BorderSide(width: 2.0,color: Color(0xff228b22)), borderRadius: BorderRadius.circular(10.0),),
 
-                                  });},icon: Icon(Icons.remove_red_eye),),
-                                  labelText: 'PASSWORD',
-                                  labelStyle: TextStyle(
-                                      fontFamily: 'Montserrat',
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.grey),
-                                  focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(color: Colors.green)),),
-                            ),
-                            SizedBox(height: 12.0),
-                            TextFormField(
-                              onSaved: (value)=>_name=value,
-                              validator: (val) => val.length < 4 ? 'Enter a name atleast 4 characters!' : null,
-                              controller: _nameController,
-                              decoration: InputDecoration(
-                                  contentPadding: new EdgeInsets.symmetric(vertical: 25.0, horizontal: 10.0),
-                                  border: OutlineInputBorder(borderSide: BorderSide(width: 2.0,color: Color(0xff228b22)), borderRadius: BorderRadius.circular(10.0),),
+                                    suffixIcon: IconButton(disabledColor:Colors.grey,onPressed: (){setState(() {
+                                      ob=!ob;
 
-                                  labelText: 'FULL NAME ',
-                                  labelStyle: TextStyle(
-                                      fontFamily: 'Montserrat',
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.grey),
-                                  focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(color: Colors.green))),
-                            ),
+                                    });},icon: Icon(Icons.remove_red_eye),),
+                                    labelText: 'PASSWORD',
+                                    labelStyle: TextStyle(
+                                        fontFamily: 'Montserrat',
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.grey),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(color: Colors.green)),),
+                              ),
+                              SizedBox(height: 12.0),
+                              TextFormField(
+                                onSaved: (value)=>_name=value,
+                                validator: (val) => val.length < 4 ? 'Enter a name atleast 4 characters!' : null,
+                                controller: _nameController,
+                                decoration: InputDecoration(
+                                    contentPadding: new EdgeInsets.symmetric(vertical: 25.0, horizontal: 10.0),
+                                    border: OutlineInputBorder(borderSide: BorderSide(width: 2.0,color: Color(0xff228b22)), borderRadius: BorderRadius.circular(10.0),),
+
+                                    labelText: 'FULL NAME ',
+                                    labelStyle: TextStyle(
+                                        fontFamily: 'Montserrat',
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.grey),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(color: Colors.green))),
+                              ),
 
 
 
-                            SizedBox(height: 12.0),
-                            TextFormField(
-                              controller: _phController,
-                              validator: (val) => val.length !=10 ? 'Enter 10 digits!' : null,
-                              keyboardType: TextInputType.number,
-                              decoration: InputDecoration(
-                                  contentPadding: new EdgeInsets.symmetric(vertical: 25.0, horizontal: 10.0),
-                                  border: OutlineInputBorder(borderSide: BorderSide(width: 2.0,color: Color(0xff228b22)), borderRadius: BorderRadius.circular(10.0),),
+                              SizedBox(height: 12.0),
+                              TextFormField(
+                                controller: _phController,
+                                validator: (val) => val.length !=10 ? 'Enter 10 digits!' : null,
+                                keyboardType: TextInputType.number,
+                                decoration: InputDecoration(
+                                    contentPadding: new EdgeInsets.symmetric(vertical: 25.0, horizontal: 10.0),
+                                    border: OutlineInputBorder(borderSide: BorderSide(width: 2.0,color: Color(0xff228b22)), borderRadius: BorderRadius.circular(10.0),),
 
-                                  labelText: 'PHONE NUMBER ',
-                                  labelStyle: TextStyle(
-                                      fontFamily: 'Montserrat',
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.grey),
-                                  focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(color: Colors.green))),
-                            ),
-                            SizedBox(height: l.size.height / 22),
-                            FlatButton(
-                              onPressed: () async{
-                                BuildContext ctx=context;
-                                //add and register
+                                    labelText: 'PHONE NUMBER ',
+                                    labelStyle: TextStyle(
+                                        fontFamily: 'Montserrat',
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.grey),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(color: Colors.green))),
+                              ),
+                              SizedBox(height: l.size.height / 22),
+                              FlatButton(
+                                onPressed: () async{
+                                  BuildContext ctx=context;
+                                  //add and register
 //                                var ah=Auth();
-                                if(_formKey.currentState.validate())
-                                {
+                                  if(_formKey.currentState.validate())
+                                  {
 //                                  await pr.show();
-                                }
+                                  }
 //                                var xxx=await ah.createAcc(_emailController.text, _passController.text, context,_hostelController.text,_nameController.text,_isMale,_rnController.text,_phController.text,pr);
 //                                print("Error code = asdadasd");
 //                                print(xxx);
 //                                pr.hide().then((isHidden){});
 
 
-                                //Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=> home()));
-                              },
-                              child: Container(
-                                  height: l.size.height / 16,
-                                  child: Material(
-                                    borderRadius: BorderRadius.circular(20.0),
-                                    shadowColor: Color(0xff228B22),
-                                    color: Color(0xff228B22),
-                                    elevation: 7.0,
-                                    child: Center(
-                                      child: Text(
-                                        'SIGN UP',
-                                        style: TextStyle(
-                                            fontSize: l.size.height / 50,
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold,
-                                            fontFamily: 'Montserrat'),
+                                  //Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=> home()));
+                                },
+                                child: Container(
+                                    height: l.size.height / 16,
+                                    child: Material(
+                                      borderRadius: BorderRadius.circular(20.0),
+                                      shadowColor: Color(0xff228B22),
+                                      color: Color(0xff228B22),
+                                      elevation: 7.0,
+                                      child: Center(
+                                        child: Text(
+                                          'SIGN UP',
+                                          style: TextStyle(
+                                              fontSize: l.size.height / 50,
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.bold,
+                                              fontFamily: 'Montserrat'),
+                                        ),
                                       ),
-                                    ),
-                                  )),
-                            ),
-                            SizedBox(height: 12.0),
-                            FlatButton(
-                              child:Text("Already a user?",style: TextStyle(
-                                color: Color(0xfff47444),
-                                fontSize: l.size.height/50,
-                                fontFamily: 'Montserrat',),),
-                              onPressed: (){Navigator.of(context).pushReplacement(MaterialPageRoute(builder:(context)=>LGnew()));
-                              },
-                            ),
-                          ],
-                        )),
-                  ]),
-                  SizedBox(height: 12.0),
-                ],
-              ),
-            ],
-          )
+                                    )),
+                              ),
+                              SizedBox(height: 12.0),
+                              FlatButton(
+                                child:Text("Already a user?",style: TextStyle(
+                                  color: Color(0xfff47444),
+                                  fontSize: l.size.height/50,
+                                  fontFamily: 'Montserrat',),),
+                                onPressed: (){Navigator.of(context).pushReplacement(MaterialPageRoute(builder:(context)=>LGnew()));
+                                },
+                              ),
+                            ],
+                          )),
+                    ]),
+                    SizedBox(height: 12.0),
+                  ],
+                ),
+              ],
+            )
+        ),
       ),
     );
   }

@@ -36,152 +36,154 @@ class _LGnewState extends State<LGnew> {
     );
     l = MediaQuery.of(context);
     return Scaffold(
-      body: Form(
-          key: _formKey,
-          child: Stack(
-            children: <Widget>[
+      body: SafeArea(
+        child: Form(
+            key: _formKey,
+            child: Stack(
+              children: <Widget>[
 
-              ListView(
-                children: <Widget>[
-                  Column(
+                ListView(
+                  children: <Widget>[
+                    Column(
 
-                      crossAxisAlignment: CrossAxisAlignment.start, children: <
-                      Widget>[
-                    Container(
-                      child: Stack(
-                        children: <Widget>[
-                          Container(
-                              color:Color(0xfff47444),
-                              height:MediaQuery.of(context).size.height/6,
-                              child: Image.asset('assets/sk.PNG')),
+                        crossAxisAlignment: CrossAxisAlignment.start, children: <
+                        Widget>[
+                      Container(
+                        child: Stack(
+                          children: <Widget>[
+                            Container(
+                                color:Color(0xfff47444),
+                                height:MediaQuery.of(context).size.height/6,
+                                child: Image.asset('assets/sk.PNG')),
 
-                          Container(
-                            padding: EdgeInsets.only(
-                                left:50, top: l.size.height /4),
-                            child: Column(
-                              children: <Widget>[
-                                Text(
-                                  "Login",
-                                  style: TextStyle(
-                                      fontFamily: 'Montserrat',
-                                      letterSpacing: -3,
-                                      fontWeight: FontWeight.w300,
-                                      fontSize: l.size.height / 10,
-                                      color: Color(0xfff47444)),
-                                ),
-                              ],
+                            Container(
+                              padding: EdgeInsets.only(
+                                  left:50, top: l.size.height /4),
+                              child: Column(
+                                children: <Widget>[
+                                  Text(
+                                    "Login",
+                                    style: TextStyle(
+                                        fontFamily: 'Montserrat',
+                                        letterSpacing: -3,
+                                        fontWeight: FontWeight.w300,
+                                        fontSize: l.size.height / 10,
+                                        color: Color(0xfff47444)),
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                    Center(
-                      child: Container(
-                          padding: EdgeInsets.only(
-                              top: l.size.height/20,
-                              left: l.size.height / 20,
-                              right: l.size.height / 17),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: <Widget>[
-                              TextFormField(
-                                onSaved: (value)=>_email=value,
-                                validator: (val) => RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(val) ?  null:'Enter a valid email!',
-                                controller: _emailController,
-                                autocorrect: true,
-                                style: TextStyle(fontSize: 18.0,
-                                  fontFamily: 'Montserrat',),
-                                decoration: InputDecoration(
-                                  contentPadding: new EdgeInsets.symmetric(vertical: 25.0, horizontal: 10.0),
-                                  border: OutlineInputBorder(borderSide: BorderSide(width: 2.0,color: Color(0xff228b22)), borderRadius: BorderRadius.circular(10.0),),
+                      Center(
+                        child: Container(
+                            padding: EdgeInsets.only(
+                                top: l.size.height/20,
+                                left: l.size.height / 20,
+                                right: l.size.height / 17),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: <Widget>[
+                                TextFormField(
+                                  onSaved: (value)=>_email=value,
+                                  validator: (val) => RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(val) ?  null:'Enter a valid email!',
+                                  controller: _emailController,
+                                  autocorrect: true,
+                                  style: TextStyle(fontSize: 18.0,
+                                    fontFamily: 'Montserrat',),
+                                  decoration: InputDecoration(
+                                    contentPadding: new EdgeInsets.symmetric(vertical: 25.0, horizontal: 10.0),
+                                    border: OutlineInputBorder(borderSide: BorderSide(width: 2.0,color: Color(0xff228b22)), borderRadius: BorderRadius.circular(10.0),),
 
-                                  labelText: 'EMAIL',
-                                  labelStyle: TextStyle(
-                                      fontFamily: 'Montserrat',
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.grey),
-                                  focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(color: Colors.green)),),
-                              ),
-                              SizedBox(height: 20.0),
-                              TextFormField(
-                                onSaved: (value)=>_pass=value,
-                                validator: (val) => val.length>5 ?  null:'Enter longer pass..',
-                                controller: _passController,
-                                obscureText: ob,
-                                decoration: InputDecoration(
-                                  contentPadding: new EdgeInsets.symmetric(vertical: 25.0, horizontal: 10.0),
-                                  border: OutlineInputBorder(borderSide: BorderSide(width: 2.0,color: Color(0xff228b22)), borderRadius: BorderRadius.circular(10.0),),
+                                    labelText: 'EMAIL',
+                                    labelStyle: TextStyle(
+                                        fontFamily: 'Montserrat',
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.grey),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(color: Colors.green)),),
+                                ),
+                                SizedBox(height: 20.0),
+                                TextFormField(
+                                  onSaved: (value)=>_pass=value,
+                                  validator: (val) => val.length>5 ?  null:'Enter longer pass..',
+                                  controller: _passController,
+                                  obscureText: ob,
+                                  decoration: InputDecoration(
+                                    contentPadding: new EdgeInsets.symmetric(vertical: 25.0, horizontal: 10.0),
+                                    border: OutlineInputBorder(borderSide: BorderSide(width: 2.0,color: Color(0xff228b22)), borderRadius: BorderRadius.circular(10.0),),
 
-                                  suffixIcon: IconButton(disabledColor:Colors.grey,onPressed: (){setState(() {
-                                    ob=!ob;
+                                    suffixIcon: IconButton(disabledColor:Colors.grey,onPressed: (){setState(() {
+                                      ob=!ob;
 
-                                  });},icon: Icon(Icons.remove_red_eye),),
-                                  labelText: 'PASSWORD',
-                                  labelStyle: TextStyle(
-                                      fontFamily: 'Montserrat',
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.grey),
-                                  focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(color: Colors.green)),),
-                              ),
-                              SizedBox(height: 12.0),
-                              SizedBox(height: 12.0),
-                              SizedBox(height: l.size.height / 22),
-                              FlatButton(
-                                onPressed: () async{
+                                    });},icon: Icon(Icons.remove_red_eye),),
+                                    labelText: 'PASSWORD',
+                                    labelStyle: TextStyle(
+                                        fontFamily: 'Montserrat',
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.grey),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(color: Colors.green)),),
+                                ),
+                                SizedBox(height: 12.0),
+                                SizedBox(height: 12.0),
+                                SizedBox(height: l.size.height / 22),
+                                FlatButton(
+                                  onPressed: () async{
 //                                  var ah = Auth();
 //                                  if(_formKey.currentState.validate()){
 //                                    await pr.show();
 //
-                                    var em=_emailController.text;
-                                    var pa= _passController.text;
+                                      var em=_emailController.text;
+                                      var pa= _passController.text;
 //                                    await ah.signInNow(em, pa, context,pr);
 
 //                                  }
 
-                                  //add and register
-                                  //  _submit();
+                                    //add and register
+                                    //  _submit();
 
-                                  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=> HomePage()));
-                                },
-                                child: Container(
-                                    height: l.size.height / 16,
-                                    child: Material(
-                                      borderRadius: BorderRadius.circular(20.0),
-                                      shadowColor: Color(0xff228B22),
-                                      color: Color(0xff228B22),
-                                      elevation: 7.0,
-                                      child: Center(
-                                        child: Text(
-                                          'SIGN IN',
-                                          style: TextStyle(
-                                              fontSize: l.size.height / 50,
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.bold,
-                                              fontFamily: 'Montserrat'),
+                                    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=> HomePg()));
+                                  },
+                                  child: Container(
+                                      height: l.size.height / 16,
+                                      child: Material(
+                                        borderRadius: BorderRadius.circular(20.0),
+                                        shadowColor: Color(0xff228B22),
+                                        color: Color(0xff228B22),
+                                        elevation: 7.0,
+                                        child: Center(
+                                          child: Text(
+                                            'SIGN IN',
+                                            style: TextStyle(
+                                                fontSize: l.size.height / 50,
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.bold,
+                                                fontFamily: 'Montserrat'),
+                                          ),
                                         ),
-                                      ),
-                                    )),
-                              ),
-                              SizedBox(height: 30.0),
-                              FlatButton(
-                                child:Text("New to Saukhyam?",style: TextStyle(
-                                  color: Color(0xfff47444),
-                                  fontSize: l.size.height/50,
-                                  fontFamily: 'Montserrat',),),
-                                onPressed: (){Navigator.of(context).pushReplacement(MaterialPageRoute(builder:(context)=>rinfo()));
-                                },
-                              ),
-                            ],
-                          )),
-                    ),
-                  ]),
-                  SizedBox(height: 12.0),
-                ],
-              ),
-            ],
-          )
+                                      )),
+                                ),
+                                SizedBox(height: 30.0),
+                                FlatButton(
+                                  child:Text("New to Saukhyam?",style: TextStyle(
+                                    color: Color(0xfff47444),
+                                    fontSize: l.size.height/50,
+                                    fontFamily: 'Montserrat',),),
+                                  onPressed: (){Navigator.of(context).pushReplacement(MaterialPageRoute(builder:(context)=>rinfo()));
+                                  },
+                                ),
+                              ],
+                            )),
+                      ),
+                    ]),
+                    SizedBox(height: 12.0),
+                  ],
+                ),
+              ],
+            )
+        ),
       ),
     );
   }
