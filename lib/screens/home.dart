@@ -72,79 +72,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
 
       ),
       drawer:DrawerC(),
-//      Drawer(
-//        child: ListView.builder(
-//            itemCount: StringUtils.drawer_items.length+1,
-//            itemBuilder: (context,index){
-//              if(index==0)
-//                {
-//                  return DrawerHeader(
-//                  child: Center(child:Image.asset(AssetUtils.drawer_header)),
-//                  decoration: BoxDecoration(
-//                  color: Color(0xfff47444),
-//                  ),
-//                  );
-//                }
-//              return ListTile(
-//                title: Text("${StringUtils.drawer_items[index-1]}"),
-//                leading: AssetUtils.drawer_icons[index-1],
-//                onTap: (){
-//                  Navigator.pop(context);
-//                  Navigator.pushNamed(context, "/$index");
-//                },
-//              );
-//            }),
-//        child:  Column(
-//          children: <Widget>[
 //
-
-//
-//            ListTile(
-//              title: Text('About Us',),
-//              leading: Icon(Icons.info),
-//              onTap: () {
-//                Navigator.pop(context);
-//              },
-//            ),
-//            ListTile(
-//              title: Text('Why Switch?'),
-//              leading: Icon(Icons.swap_horiz),
-//              onTap: () {
-//                Navigator.pop(context);
-//              },
-//            ),
-//            ListTile(
-//              title: Text('Wash and Wear'),
-//              leading: Icon(Icons.collections_bookmark),
-//              onTap: () {
-//                Navigator.pop(context);
-//              },
-//            ),
-//            ListTile(
-//              title: Text('FAQ'),
-//              leading: Icon(Icons.collections_bookmark),
-//              onTap: () {
-//                Navigator.pop(context);
-//              },
-//            ),
-//            ListTile(
-//              title: Text('Testimonials',),
-//              leading: Icon(Icons.shopping_basket),
-//              onTap: () {
-//                Navigator.pop(context);
-//              },
-//            ),
-//            ListTile(
-//              title: Text('Contact Us'),
-//              leading: Icon(Icons.contacts),
-//              onTap: () {
-//                Navigator.pop(context);
-//              },
-//            ),
-//          ],
-//        ),
-
-//      ),
       body: ListView(
         children: [
 

@@ -40,6 +40,7 @@ class _ContactPgState extends State<ContactPg> {
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
   }
+  String mapURL = 'https://www.google.com/maps/place/Mata+Amritanandamayi+Math/@9.088731,76.486935,14z/data=!4m5!3m4!1s0x0:0x1a33d40c3847a1dd!8m2!3d9.0887307!4d76.4869353?hl=en-IN';
 
   @override
   Widget build(BuildContext context) {
@@ -52,12 +53,12 @@ class _ContactPgState extends State<ContactPg> {
           child: ListView(
             children: [
               Padding(
-                padding:  EdgeInsets.only(left:20.0,top:30.0,right: 20.0,bottom:20.0),
+                padding:  EdgeInsets.only(left:20.0,top:30.0,right: 20.0,bottom:10.0),
                 child: Text('Contact Us',style:TextStyle(fontSize: MediaQuery.of(context).size.width/10,fontFamily: 'Montserrat',fontWeight: FontWeight.bold)),
               ),
               Divider(),
               Padding(
-                padding:EdgeInsets.only(left:20.0,top:20.0,right: 20.0,bottom:10.0),
+                padding:EdgeInsets.only(left:20.0,top:10.0,right: 20.0,bottom:10.0),
                 child: Center(child: Image.asset('assets/logo-full.png'),),
               ),
               Divider(),
@@ -79,21 +80,23 @@ class _ContactPgState extends State<ContactPg> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text('For more details, please visit',style: TextStyle(
-                        fontSize: 15
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold
                     ),),
                     SizedBox(height: 20,),
-                    FlatButton.icon(onPressed: (){_launchUrl('https://www.amritapuri.org');}, icon: Icon(Icons.web), label: Text('www.amritapuri.org',style: TextStyle(
+                    FlatButton.icon(onPressed: (){_launchUrl('https://www.amritapuri.org');}, icon: Icon(Icons.web,color: Colors.blue,), label: Text('www.amritapuri.org',style: TextStyle(
                         fontSize: 15
                     ),)),
                     SizedBox(height: 10,),
-                    FlatButton.icon(onPressed: (){ _launchUrl('https://www.embracingtheworld.org');}, icon: Icon(Icons.web), label: Text('www.embracingtheworld.org',style: TextStyle(
+                    FlatButton.icon(onPressed: (){ _launchUrl('https://www.embracingtheworld.org');}, icon: Icon(Icons.web,color: Colors.blue), label: Text('www.embracingtheworld.org',style: TextStyle(
                         fontSize: 15
                     ),)),
                     SizedBox(height: 10,),
-                    FlatButton.icon(onPressed: (){_launchUrl('https://www.amritaserve.org');}, icon: Icon(Icons.web), label: Text('www.amritaserve.org',style: TextStyle(
+                    FlatButton.icon(onPressed: (){_launchUrl('https://www.amritaserve.org');}, icon: Icon(Icons.web,color: Colors.blue,), label: Text('www.amritaserve.org',style: TextStyle(
                         fontSize: 15
                     ),)),
-                    FlatButton.icon(onPressed: (){_launchUrl('');}, icon: Icon(Icons.location_on), label: Text('Location',style: TextStyle(
+                    SizedBox(height: 10,),
+                    FlatButton.icon(onPressed: (){_launchUrl(mapURL);}, icon: Icon(Icons.location_on,color: Colors.red,), label: Text('Location',style: TextStyle(
                         fontSize: 15
                     ),))
                   ],
