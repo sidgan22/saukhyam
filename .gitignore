@@ -27,6 +27,7 @@
 .flutter-plugins
 .flutter-plugins-dependencies
 .packages
+.ios/Runner/AppDelegate.m
 .pub-cache/
 .pub/
 /build/
