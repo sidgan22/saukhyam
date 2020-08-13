@@ -8,7 +8,6 @@ class AssetUtils{
     Icon(Icons.sync),
     Icon(Icons.all_inclusive),
     Icon(Icons.question_answer),
-    Icon(Icons.contact_mail),
     Icon(Icons.phone),
 
   ];

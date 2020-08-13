@@ -12,7 +12,6 @@ class StringUtils{
     "Why Switch",
     "Wash and Wear",
     "FAQ",
-    "Testimonials",
     "Contact Us",
   ];
   //Drawer Nav

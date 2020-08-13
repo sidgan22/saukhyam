@@ -23,6 +23,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'LaundryWala',
       theme: ThemeData(
+        fontFamily: 'Montserrat',
+
         //Color(0xFFFCFCFC)
         backgroundColor: Colors.black54,
 

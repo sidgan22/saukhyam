@@ -16,6 +16,9 @@ class HomePg extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        fontFamily: 'Montserrat'
+    ),
       initialRoute: '/',
       routes: {
         // When navigating to the "/" route, build the FirstScreen widget.
@@ -23,8 +26,7 @@ class HomePg extends StatelessWidget {
         // When navigating to the "/second" route, build the SecondScreen widget.
         '/2': (context) => WashWear(),
         '/3': (context) => FaqPg(),
-        '/4': (context) => TestiPg(),
-        '/5': (context) => ContactPg(),
+        '/4': (context) => ContactPg(),
       },
       home: HomePage(),
     );
@@ -166,7 +168,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
             Divider(),
           Padding(
             padding: EdgeInsets.only(top:20.0,left: 20.0),
-            child: Text('About Us.',style: TextStyle(color: Colors.black,fontSize: MediaQuery.of(context).size.width/10),),
+            child: Text('About Us.',style: TextStyle(color: Colors.black,fontSize: MediaQuery.of(context).size.width/10,fontFamily: 'Montserrat'),),
           ),
           SizedBox(height: 15,),
           ExpandableWidg(),
