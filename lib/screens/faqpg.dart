@@ -4,6 +4,9 @@ import 'package:saukhyam/models/appbar.dart';
 import 'package:saukhyam/models/drawerCustom.dart';
 import 'package:saukhyam/utils/string_utils.dart';
 
+import '../utils/string_utils.dart';
+import '../utils/string_utils.dart';
+
 class FaqPg extends StatefulWidget {
   @override
   _FaqPgState createState() => _FaqPgState();
@@ -26,35 +29,24 @@ class _FaqPgState extends State<FaqPg> {
     return Scaffold(
         appBar: AppBarCustom(context),
         drawer: DrawerC() ,
-        body: Container(
-            height: MediaQuery.of(context).size.height,
-            color:Colors.white,
-            child: Column(
-                children: [
-                  Expanded(
-                    flex: 1,
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding:  EdgeInsets.only(left:20.0,top:30.0,right: 20.0,bottom:20.0),
-                          child: Text('Frequently Asked Questions',style:TextStyle(fontSize: MediaQuery.of(context).size.width/14,fontFamily: 'Montserrat',fontWeight: FontWeight.bold)),
-                        ),
-                        Divider(),
-                      ],
-                    ),
-                  ),
-
-                  Expanded(
-                    flex: 7,
-                    child: ListView.builder(
-                        itemCount: 19,
-                        itemBuilder: (context,index){
-                      return ExpandWidg(index);
+        body: Column(
+            children: [
+              Padding(
+                padding:  EdgeInsets.only(left:20.0,top:30.0,right: 20.0,bottom:10.0),
+                child: Text('Frequently Asked Questions',style:TextStyle(fontSize: MediaQuery.of(context).size.width/14,fontFamily: 'Montserrat',fontWeight: FontWeight.bold)),
+              ),
+              Divider(),
+              Container(
+                height: MediaQuery.of(context).size.height/1.4,
+                child: ListView.builder(
+                    itemCount: StringUtils.exp.length,
+                    itemBuilder: (context,index){
+                        return ExpandWidg(index);
                     }),
-                  ),
-                  Divider(),
+              ),
+              Divider(),
 
-                ])));
+            ]));
   }
   Widget ExpandWidg(int i)
   {
@@ -63,7 +55,7 @@ class _FaqPgState extends State<FaqPg> {
 
     return ExpandableNotifier(
         child: Padding(
-          padding: const EdgeInsets.all(10),
+          padding: const EdgeInsets.all(5),
           child: Card(
             clipBehavior: Clip.antiAlias,
             child: Column(
