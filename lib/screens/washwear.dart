@@ -6,6 +6,8 @@ import 'package:saukhyam/models/appbar.dart';
 import 'package:saukhyam/models/drawerCustom.dart';
 import 'package:saukhyam/screens/home.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+
+import '../utils/asset_utils.dart';
 class WashWear extends StatefulWidget {
   @override
   _WashWearState createState() => _WashWearState();
@@ -87,48 +89,40 @@ class _WashWearState extends State<WashWear> {
       appBar: AppBarCustom(context),
       drawer: DrawerC(),
       body: ListView(
-        shrinkWrap: true,
         children: [
           Padding(
             padding:  EdgeInsets.only(left:20.0,top:30.0,right: 20.0),
             child: Center(child: Text('Wash and Wear',style:TextStyle(fontSize: MediaQuery.of(context).size.width/12,fontFamily: 'Montserrat',fontWeight: FontWeight.bold))),
           ),
-            Divider(),
-            FutureBuilder(
-                future: rootBundle.loadString("assets/washwear.md"),
-                builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
-                  if (snapshot.hasData) {
-                    return Markdown(data: snapshot.data,shrinkWrap: true,);
-                  }
+          Divider(),
+          Container(
+              height: MediaQuery.of(context).size.height/1.5,
+              child: Markdown(
 
-                  return Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }),
-            Container(
-              height: MediaQuery.of(context).size.height/3,
-              child: Column(
-                children: [
-
-                  Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: Text(' How to wear a Cloth Day pad with a 2 Fold insert',style: TextStyle(fontWeight: FontWeight.bold),),
-                  ),
-                  YoutubePlayer(
-                    controller: _controller1,
-                    showVideoProgressIndicator: true,
-                    onReady: (){
-                    },
-                  ),
-                ],
-              ),
-            ),
+                  data:AssetUtils.washwear)),
           Container(
             height: MediaQuery.of(context).size.height/3,
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(12.0),
+                  padding: const EdgeInsets.all(10),
+                  child: Text(' How to wear a Cloth Day pad with a 2 Fold insert',style: TextStyle(fontWeight: FontWeight.bold),),
+                ),
+                YoutubePlayer(
+                  controller: _controller1,
+                  showVideoProgressIndicator: true,
+                  onReady: (){
+                  },
+                ),
+              ],
+            ),
+          ),
+          Container(
+            height: MediaQuery.of(context).size.height/3,
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
                   child: Text(' How to wear Cloth Day Pad with a 3 Fold insert',style: TextStyle(fontWeight: FontWeight.bold),),
                 ),
                 YoutubePlayer(
@@ -144,7 +138,7 @@ class _WashWearState extends State<WashWear> {
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(12.0),
+                  padding: const EdgeInsets.all(10.0),
                   child: Text(' How to wear a cloth Night Pad',style: TextStyle(fontWeight: FontWeight.bold),),
                 ),
                 YoutubePlayer(
