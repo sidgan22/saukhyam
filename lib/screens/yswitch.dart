@@ -23,30 +23,21 @@ class _SwitchWhyState extends State<SwitchWhy> {
           color:Colors.white,
           child: ListView(
             children: [
-              Padding(
-                padding:  EdgeInsets.only(left:20.0,top:30.0,right: 20.0,bottom:10.0),
-                child: Text('Why Switch ?',style:TextStyle(fontSize: MediaQuery.of(context).size.width/10,fontFamily: 'Montserrat',fontWeight: FontWeight.bold)),
-              ),
-              Divider(),
-              Padding(
-                padding:EdgeInsets.only(left:20.0,top:10.0,right: 20.0,bottom:10.0),
-                child: Center(child: Image.asset('assets/imgyswitch.jpg'),),
-              ),
-              Divider(),
-              Container(
-                height: 500,
-                child: FutureBuilder(
-                    future: rootBundle.loadString("assets/whySwitch.md"),
-                    builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
-                      if (snapshot.hasData) {
-                        return Markdown(data: snapshot.data);
-                      }
-
-                      return Center(
-                        child: CircularProgressIndicator(),
-                      );
-                    }),
-              ),
+            Padding(
+              padding:  EdgeInsets.only(left:20.0,top:30.0,right: 20.0),
+              child: Center(child: Text('Why Switch',style:TextStyle(fontSize: MediaQuery.of(context).size.width/12,fontFamily: 'Montserrat',fontWeight: FontWeight.bold))),
+            ),
+            Divider(),
+            FutureBuilder(
+                future: rootBundle.loadString("assets/whySwitch.md"),
+                builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
+                  if (snapshot.hasData) {
+                    return Markdown(data: snapshot.data,shrinkWrap: true,);
+                  }
+                  return Center(
+                    child: Center(child: CircularProgressIndicator()),
+                  );
+                })
 
             ],
           ),

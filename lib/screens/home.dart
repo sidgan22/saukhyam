@@ -96,7 +96,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
             Divider(),
           Padding(
             padding: EdgeInsets.only(top:20.0,left: 20.0),
-            child: Text('About Us.',style: TextStyle(color: Colors.black,fontSize: MediaQuery.of(context).size.width/10,fontFamily: 'Montserrat'),),
+            child: Text('About Us',style: TextStyle(color: Colors.black,fontWeight:FontWeight.bold,fontSize: MediaQuery.of(context).size.width/10,fontFamily: 'Montserrat'),),
           ),
           SizedBox(height: 15,),
           ExpandableWidg(),
@@ -137,7 +137,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                         padding: EdgeInsets.all(10),
                         child: Text(
                           "Saukhyam as first choice for women.",
-                          style: Theme.of(context).textTheme.body2,
+                          style:TextStyle(fontWeight: FontWeight.bold),
                         )),
                     collapsed: Text(
                       loremIpsum,

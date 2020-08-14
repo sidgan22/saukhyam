@@ -54,12 +54,13 @@ class _ContactPgState extends State<ContactPg> {
             children: [
               Padding(
                 padding:  EdgeInsets.only(left:20.0,top:30.0,right: 20.0,bottom:10.0),
-                child: Text('Contact Us',style:TextStyle(fontSize: MediaQuery.of(context).size.width/10,fontFamily: 'Montserrat',fontWeight: FontWeight.bold)),
+                child: Center(child: Text('Contact Us',style:TextStyle(fontSize: MediaQuery.of(context).size.width/10,fontFamily: 'Montserrat',fontWeight: FontWeight.bold))),
               ),
               Divider(),
               Padding(
                 padding:EdgeInsets.only(left:20.0,top:10.0,right: 20.0,bottom:10.0),
-                child: Center(child: Image.asset('assets/logo-full.png'),),
+                child: Center(
+                  child:  Image.asset('assets/logo-full.png'),),
               ),
               Divider(),
               Padding(
