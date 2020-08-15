@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:expandable/expandable.dart';
 import 'package:saukhyam/models/appbar.dart';
@@ -73,55 +74,82 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
       ),
       drawer:DrawerC(),
 //
-      body: ListView(
+      body: Column(
         children: [
-
-            CarouselSlider(
-                items: [Image.asset('assets/sk.PNG'),Image.asset('assets/sk.PNG'),Image.asset('assets/sk.PNG'),Image.asset('assets/sk.PNG')],
-                options: CarouselOptions(
-                  height: MediaQuery.of(context).size.height/5,
-                  aspectRatio: 16/9,
-                  viewportFraction: 0.8,
-                  initialPage: 0,
-                  enableInfiniteScroll: true,
-                  reverse: false,
-                  autoPlay: true,
-                  autoPlayInterval: Duration(seconds: 3),
-                  autoPlayAnimationDuration: Duration(milliseconds: 800),
-                  autoPlayCurve: Curves.fastOutSlowIn,
-                  enlargeCenterPage: true,
-                  scrollDirection: Axis.horizontal,
-                )
+            Expanded(
+              flex: 8,
+              child:Column(
+                children: [
+                  CarouselSlider(
+                      items: [
+                        Image.asset('assets/1.JPG'),
+                        Image.asset('assets/2.jpg'),
+                        Image.asset('assets/3.JPG'),
+                        Image.asset('assets/4.JPG'),
+                        Image.asset('assets/5.JPG'),
+                      ],
+                      options: CarouselOptions(
+                        height: MediaQuery.of(context).size.height/3.25,
+                        aspectRatio: 16/9,
+                        viewportFraction: 0.8,
+                        initialPage: 0,
+                        enableInfiniteScroll: true,
+                        reverse: false,
+                        autoPlay: true,
+                        autoPlayInterval: Duration(seconds: 3),
+                        autoPlayAnimationDuration: Duration(milliseconds: 800),
+                        autoPlayCurve: Curves.fastOutSlowIn,
+                        enlargeCenterPage: true,
+                        scrollDirection: Axis.horizontal,
+                      )
+                  ),
+                  Divider(),
+                  Padding(
+                    padding: EdgeInsets.only(top:10.0,left: 20.0,bottom:10),
+                    child: Text('About Us',style: TextStyle(color: Colors.black,fontWeight:FontWeight.bold,fontSize: MediaQuery.of(context).size.width/10,fontFamily: 'Montserrat'),),
+                  ),
+                  Divider(),
+                ],
+              ) ,
             ),
-            Divider(),
-          Padding(
-            padding: EdgeInsets.only(top:20.0,left: 20.0),
-            child: Text('About Us',style: TextStyle(color: Colors.black,fontWeight:FontWeight.bold,fontSize: MediaQuery.of(context).size.width/10,fontFamily: 'Montserrat'),),
-          ),
-          SizedBox(height: 15,),
-          ExpandableWidg(),
-          ExpandableWidg(),
-          ExpandableWidg(),
+
+          Expanded(
+            flex: 9,
+            child:
+            Container(
+              height: MediaQuery.of(context).size.height/2,
+              child: ListView.builder(
+                  itemCount: StringUtils.exp2.length,
+                  itemBuilder: (context,index){
+                    return ExpandWidg(index);
+                  }),
+            ),
+          )
 
         ],
       )
     );
   }
-  Widget ExpandableWidg()
+
+  Widget ExpandWidg(int i)
   {
+    String s1 = StringUtils.exp2[i];
+    String s11 = StringUtils.exp22[i];
+
     return ExpandableNotifier(
         child: Padding(
-          padding: const EdgeInsets.all(10),
+          padding: const EdgeInsets.all(5),
           child: Card(
             clipBehavior: Clip.antiAlias,
             child: Column(
               children: <Widget>[
                 SizedBox(
-                  height: 50,
+                  height: 20,
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Colors.orange,
-                      shape: BoxShape.rectangle,
+                        color: Colors.green,
+                        shape: BoxShape.rectangle,
+                        border: Border.all(color: Colors.green,width: 2.0)
                     ),
                   ),
                 ),
@@ -136,11 +164,11 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                     header: Padding(
                         padding: EdgeInsets.all(10),
                         child: Text(
-                          "Saukhyam as first choice for women.",
-                          style:TextStyle(fontWeight: FontWeight.bold),
+                          s1,
+                          style: TextStyle(fontWeight: FontWeight.bold),
                         )),
                     collapsed: Text(
-                      loremIpsum,
+                      s11,
                       softWrap: true,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
@@ -148,14 +176,13 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                     expanded: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        for (var _ in Iterable.generate(5))
-                          Padding(
-                              padding: EdgeInsets.only(bottom: 10),
-                              child: Text(
-                                loremIpsum,
-                                softWrap: true,
-                                overflow: TextOverflow.fade,
-                              )),
+                        Padding(
+                            padding: EdgeInsets.only(bottom: 10),
+                            child: Text(
+                              s11,
+                              softWrap: true,
+                              overflow: TextOverflow.fade,
+                            )),
                       ],
                     ),
                     builder: (_, collapsed, expanded) {
@@ -173,6 +200,5 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
               ],
             ),
           ),
-        ));
-  }
+        ));}
 }

@@ -30,7 +30,7 @@ class _DrawerCState extends State<DrawerC> {
             leading: AssetUtils.drawer_icons[index-1],
             onTap: (){
               Navigator.pop(context);
-              Navigator.pushNamed(context, "/$index");
+              Navigator.pushReplacementNamed(context, "/$index");
             },
           );
         })));}

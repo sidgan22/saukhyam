@@ -37,6 +37,7 @@ class _FaqPgState extends State<FaqPg> {
               ),
               Divider(),
               Container(
+                
                 height: MediaQuery.of(context).size.height/1.4,
                 child: ListView.builder(
                     itemCount: StringUtils.exp.length,

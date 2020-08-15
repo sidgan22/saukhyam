@@ -96,9 +96,8 @@ class _WashWearState extends State<WashWear> {
           ),
           Divider(),
           Container(
-              height: MediaQuery.of(context).size.height/1.5,
+              height: MediaQuery.of(context).size.height/2,
               child: Markdown(
-
                   data:AssetUtils.washwear)),
           Container(
             height: MediaQuery.of(context).size.height/3,
