@@ -5,12 +5,14 @@ class AssetUtils{
   static const String drawer_header = 'assets/sk.PNG';
 
   static const List<Icon> drawer_icons = [
-    Icon(Icons.sync),
-    Icon(Icons.all_inclusive),
-    Icon(Icons.question_answer),
-    Icon(Icons.phone),
+    Icon(Icons.help,color:Colors.white),
+    Icon(Icons.sync,color:Colors.white),
+    Icon(Icons.all_inclusive,color:Colors.white),
+    Icon(Icons.question_answer,color:Colors.white),
+    Icon(Icons.phone,color:Colors.white),
 
   ];
+
 
   static const washwear = """ 
   

@@ -3,6 +3,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:expandable/expandable.dart';
+import 'package:flutter/widgets.dart';
+import 'package:saukhyam/main.dart';
 import 'package:saukhyam/models/appbar.dart';
 import 'package:saukhyam/models/drawerCustom.dart';
 import 'package:saukhyam/screens/contact.dart';
@@ -13,6 +15,7 @@ import 'package:saukhyam/screens/washwear.dart';
 import 'package:saukhyam/screens/yswitch.dart';
 import 'package:saukhyam/utils/asset_utils.dart';
 import 'package:saukhyam/utils/string_utils.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 class HomePg extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -38,8 +41,7 @@ class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
 }
-const loremIpsum =
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+
 
 
 class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin{
@@ -48,6 +50,23 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
   var uname = "Siddarth Ganesh";
   TextStyle drawerIcons = TextStyle(color: Colors.white);
   var uemail = "sidgan22@gmail.com";
+
+
+  //Youtube Video
+  bool _isPlayerReady1 = false;
+  PlayerState _playerState1;
+  YoutubeMetaData _videoMetaData1;
+  YoutubePlayerController _controllerhomeyt = YoutubePlayerController(
+    initialVideoId: 'vYUlDQMGHDg',
+    flags: YoutubePlayerFlags(
+      autoPlay: true,
+      mute: false,
+      loop: true,
+    ),
+  );
+
+
+
   @override
   void initState() {
     // TODO: implement initState
@@ -77,16 +96,77 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
       body: Column(
         children: [
             Expanded(
-              flex: 8,
+              flex: 3,
               child:Column(
                 children: [
-                  CarouselSlider(
+//                  Container(
+//                    height: MediaQuery.of(context).size.height/2.85,
+//                    child:
+//                  ),
+                  YoutubePlayer(
+                    controller: _controllerhomeyt,
+                    showVideoProgressIndicator: true,
+                    onReady: (){
+                    },
+                  ),
+//
+                  Divider(thickness: 2,),
+//
+//                  Padding(
+//                    padding: EdgeInsets.only(top:10.0,left: 20.0,bottom:10),
+//                    child: Text('About Us',style: TextStyle(color: Colors.black,fontWeight:FontWeight.bold,fontSize: MediaQuery.of(context).size.width/10,fontFamily: 'Montserrat'),),
+//                  ),
+//                  Divider(),
+                ],
+              ) ,
+            ),
+
+          Expanded(
+            flex: 2,
+            child:
+            GridView.builder(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1),
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (_, index) {
+                return Card(
+                  color: Color(0xfff47444),
+                  child:Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        AssetUtils.drawer_icons[index],
+                        Text(home_titles[index],style: TextStyle(color: Colors.white),)
+                      ],
+                    ),
+                  ),
+                );
+                  FlatButton.icon(onPressed: (){}, icon: AssetUtils.drawer_icons[index], label: Text(home_titles[index]));
+//                    Card(
+//
+//                    color: Color(0xfff47444),
+//                    child: Column(
+//                      mainAxisAlignment: MainAxisAlignment.center,
+//                      children: [
+//                        Icon(Icons.help_outline,color: Colors.white,),
+//                        Center(child: Text(home_titles[index],style: TextStyle(color: Colors.white),)),
+//                      ],
+//                    ),
+//                  );
+              },
+              itemCount: home_titles.length,
+            ),
+          ),
+          Divider(thickness: 2,),
+          Expanded(
+            flex: 3,
+            child:CarouselSlider(
                       items: [
-                        Image.asset('assets/1.JPG'),
-                        Image.asset('assets/2.jpg'),
-                        Image.asset('assets/3.JPG'),
-                        Image.asset('assets/4.JPG'),
-                        Image.asset('assets/5.JPG'),
+//                        Image.asset('assets/1.JPG'),
+//                        Image.asset('assets/2.jpg'),
+//                        Image.asset('assets/3.JPG'),
+//                        Image.asset('assets/4.JPG'),
+//                        Image.asset('assets/5.JPG'),
                       ],
                       options: CarouselOptions(
                         height: MediaQuery.of(context).size.height/3.25,
@@ -103,27 +183,6 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                         scrollDirection: Axis.horizontal,
                       )
                   ),
-                  Divider(),
-                  Padding(
-                    padding: EdgeInsets.only(top:10.0,left: 20.0,bottom:10),
-                    child: Text('About Us',style: TextStyle(color: Colors.black,fontWeight:FontWeight.bold,fontSize: MediaQuery.of(context).size.width/10,fontFamily: 'Montserrat'),),
-                  ),
-                  Divider(),
-                ],
-              ) ,
-            ),
-
-          Expanded(
-            flex: 9,
-            child:
-            Container(
-              height: MediaQuery.of(context).size.height/2,
-              child: ListView.builder(
-                  itemCount: StringUtils.exp2.length,
-                  itemBuilder: (context,index){
-                    return ExpandWidg(index);
-                  }),
-            ),
           )
 
         ],
@@ -147,9 +206,9 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                   height: 20,
                   child: Container(
                     decoration: BoxDecoration(
-                        color: Colors.green,
+                        color:  Color(0xfff47444),
                         shape: BoxShape.rectangle,
-                        border: Border.all(color: Colors.green,width: 2.0)
+                        border: Border.all(color: Color(0xfff47444),width: 2.0)
                     ),
                   ),
                 ),

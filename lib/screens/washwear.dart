@@ -100,11 +100,11 @@ class _WashWearState extends State<WashWear> {
               child: Markdown(
                   data:AssetUtils.washwear)),
           Container(
-            height: MediaQuery.of(context).size.height/3,
+            height: MediaQuery.of(context).size.height/2.85,
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(8),
                   child: Text(' How to wear a Cloth Day pad with a 2 Fold insert',style: TextStyle(fontWeight: FontWeight.bold),),
                 ),
                 YoutubePlayer(
@@ -117,11 +117,11 @@ class _WashWearState extends State<WashWear> {
             ),
           ),
           Container(
-            height: MediaQuery.of(context).size.height/3,
+            height: MediaQuery.of(context).size.height/2.85,
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(10.0),
+                  padding: const EdgeInsets.all(8),
                   child: Text(' How to wear Cloth Day Pad with a 3 Fold insert',style: TextStyle(fontWeight: FontWeight.bold),),
                 ),
                 YoutubePlayer(
@@ -133,11 +133,11 @@ class _WashWearState extends State<WashWear> {
               ],
             ),
           ),Container(
-            height: MediaQuery.of(context).size.height/3,
+            height: MediaQuery.of(context).size.height/2.85,
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(10.0),
+                  padding: const EdgeInsets.all(8),
                   child: Text(' How to wear a cloth Night Pad',style: TextStyle(fontWeight: FontWeight.bold),),
                 ),
                 YoutubePlayer(

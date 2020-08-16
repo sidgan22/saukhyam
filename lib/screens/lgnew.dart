@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 import 'package:saukhyam/screens/reginfo.dart';
 
+import '../main.dart';
 import 'home.dart';
 class LGnew extends StatefulWidget {
   @override
@@ -62,7 +63,7 @@ class _LGnewState extends State<LGnew> {
                               child: Column(
                                 children: <Widget>[
                                   Text(
-                                    "Login",
+                                    login,
                                     style: TextStyle(
                                         fontFamily: 'Montserrat',
                                         letterSpacing: -3,

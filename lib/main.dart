@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:saukhyam/screens/lgnew.dart';
+import 'package:saukhyam/utils/MainLocalization.dart';
+import 'package:saukhyam/utils/string_utils.dart';
 import 'screens/reginfo.dart';
 import 'screens/home.dart';
 
@@ -13,6 +16,11 @@ enum AuthStatus {
   LOGGED_IN,
 }
 
+String lang_code = 'en';
+
+List<String> home_titles;
+String login;
+
 void main() => runApp(MaterialApp(
     home: MyApp()));
 
@@ -21,7 +29,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'LaundryWala',
+      title: 'Saukhyam',
       theme: ThemeData(
         fontFamily: 'Montserrat',
 
@@ -29,7 +37,8 @@ class MyApp extends StatelessWidget {
         backgroundColor: Colors.black54,
 
       ),
-      home: MyHomePage(title: 'LaundryWala'),
+
+    home: MyHomePage(title: 'Saukhyam'),
     );
   }
 }
@@ -45,7 +54,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMixin{
   AnimationController controller;
   Animation _animation;
-
 //    if(u.currentUser()!=uid)
 //      {
 //        Navigator.pushReplacement(
@@ -94,7 +102,24 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]);
+    switch(lang_code) {
+      case "en": {
+        home_titles = StringUtils.titles_en;
+        login = StringUtils.login_en;
+      }
+      break;
 
+      case "hi": {
+        home_titles = StringUtils.titles_hi;
+        login = StringUtils.login_hi;
+      }
+      break;
+
+      default: {
+
+      }
+      break;
+    }
     controller=AnimationController (vsync: this,duration: Duration(milliseconds: 2500));
     _animation=Tween(begin:0.1,end:1.0).animate(controller);
     controller.forward();

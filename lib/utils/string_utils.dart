@@ -7,6 +7,37 @@ class StringUtils{
 
 
 
+  //pg1 - Home
+  //pg2 - YSwitch
+  //pg3 - Wash wear
+  //pg4 - FAQ
+  //pg5 - Contact
+
+
+  //Login
+  static const String login_en = 'Login';
+  static const String login_hi = 'लॉग इन';
+
+
+  //Why Switch Page
+  static const List<String> titles_en = [
+    'About Us',
+    'Why Switch',
+    'Wash and Wear',
+    'FAQ',
+    'Contact Us'
+  ];
+
+  static const List<String> titles_hi = [
+    'हमारे बारे में',
+    'क्यों स्विच करें',
+    'धो के पहनो',
+    'अधिकतर पूछे जाने वाले सवाल',
+    'संपर्क करें'
+  ];
+
+
+
   //Drawer Items
   static const List <String> drawer_items = [
     "Why Switch",
