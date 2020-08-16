@@ -71,6 +71,8 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
   void initState() {
     // TODO: implement initState
     super.initState();
+    _videoMetaData1 = const YoutubeMetaData();
+    _playerState1 = PlayerState.unknown;
     _animationController = AnimationController(vsync: this ,duration: Duration(milliseconds: 700),reverseDuration: Duration(milliseconds: 700));
   }
   final scaffKey = GlobalKey<ScaffoldState>();
@@ -162,6 +164,22 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
             flex: 3,
             child:CarouselSlider(
                       items: [
+
+                        Image(
+                          image: NetworkImage('https://github.com/sidgan22/saukhyam/blob/master/images/1.JPG'),
+                        ),
+                        Image(
+                          image: NetworkImage('https://github.com/sidgan22/saukhyam/blob/master/images/2.jpg'),
+                        ),
+                        Image(
+                          image: NetworkImage('https://github.com/sidgan22/saukhyam/blob/master/images/3.JPG'),
+                        ),
+                        Image(
+                          image: NetworkImage('https://github.com/sidgan22/saukhyam/blob/master/images/4.JPG'),
+                        ),
+                        Image(
+                          image: NetworkImage('https://github.com/sidgan22/saukhyam/blob/master/images/5.JPG'),
+                        ),
 //                        Image.asset('assets/1.JPG'),
 //                        Image.asset('assets/2.jpg'),
 //                        Image.asset('assets/3.JPG'),
