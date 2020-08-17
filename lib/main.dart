@@ -18,8 +18,6 @@ enum AuthStatus {
 
 String lang_code = 'en';
 
-List<String> home_titles;
-String login;
 
 void main() => runApp(MaterialApp(
     home: MyApp()));
@@ -54,46 +52,12 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMixin{
   AnimationController controller;
   Animation _animation;
-//    if(u.currentUser()!=uid)
-//      {
-//        Navigator.pushReplacement(
-//            context,
-//            MaterialPageRoute(builder: (context) => home()));
-//      }
-//    else
-//      {
-//        Navigator.pushReplacement(
-//            context,
-//            MaterialPageRoute(builder: (context) => rinfo()));
-//      }
-//  var ss = Auth();
+
   onDoneLoading() async {
-    // _googleSignIn.onCurrentUserChanged.listen((GoogleSignInAccount account) async {
-//      print(account);
-//      if (account != null) {
-//        // user logged
-//        print(_currentUser);
-//        Navigator.pushReplacement(
-//            context,
-//            MaterialPageRoute(builder: (context) => LGnew()));
-//      } else {
-//        Navigator.pushReplacement(
-//            context,
-//            MaterialPageRoute(builder: (context) => LGnew()));
-//      }
-//    });
-//    print(ss.getCurrentUser());
-//    final FirebaseUser user = await FirebaseAuth.instance.currentUser();
-//    if(user==null)
+
       Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => LGnew()));
-//    else
-//      Navigator.pushReplacement(
-//          context,
-//          MaterialPageRoute(builder: (context) => home()));
-    /// other way there is no user logged.
-    //_googleSignIn.signInSilently().whenComplete(() =>  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=> LgPage())));
   }
 
   @override
@@ -102,25 +66,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]);
-    switch(lang_code) {
-      case "en": {
-        home_titles = StringUtils.titles_en;
-        login = StringUtils.login_en;
-      }
-      break;
-
-      case "hi": {
-        home_titles = StringUtils.titles_hi;
-        login = StringUtils.login_hi;
-      }
-      break;
-
-      default: {
-
-      }
-      break;
-    }
-    controller=AnimationController (vsync: this,duration: Duration(milliseconds: 2500));
+      controller=AnimationController (vsync: this,duration: Duration(milliseconds: 2500));
     _animation=Tween(begin:0.1,end:1.0).animate(controller);
     controller.forward();
     Timer(Duration(milliseconds: 4000), onDoneLoading);

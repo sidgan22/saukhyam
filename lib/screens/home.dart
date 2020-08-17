@@ -16,6 +16,9 @@ import 'package:saukhyam/screens/yswitch.dart';
 import 'package:saukhyam/utils/asset_utils.dart';
 import 'package:saukhyam/utils/string_utils.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+
+
+
 class HomePg extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -36,6 +39,7 @@ class HomePg extends StatelessWidget {
     );
   }
 }
+
 
 class HomePage extends StatefulWidget {
   @override
@@ -67,10 +71,12 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
 
 
 
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+
     _videoMetaData1 = const YoutubeMetaData();
     _playerState1 = PlayerState.unknown;
     _animationController = AnimationController(vsync: this ,duration: Duration(milliseconds: 700),reverseDuration: Duration(milliseconds: 700));
@@ -91,6 +97,9 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
 //        ),
       endDrawer: UserAccountsDrawerHeader(
         accountName: Text(uname),
+        onDetailsPressed: (){
+          Navigator.of(context).push(MaterialPageRoute(builder: (context)=>LGnew()));
+        },
 
       ),
       drawer:DrawerC(),
@@ -98,52 +107,38 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
       body: Column(
         children: [
             Expanded(
-              flex: 3,
-              child:Column(
-                children: [
-//                  Container(
-//                    height: MediaQuery.of(context).size.height/2.85,
-//                    child:
-//                  ),
-                  YoutubePlayer(
-                    controller: _controllerhomeyt,
-                    showVideoProgressIndicator: true,
-                    onReady: (){
-                    },
-                  ),
-//
-                  Divider(thickness: 2,),
-//
-//                  Padding(
-//                    padding: EdgeInsets.only(top:10.0,left: 20.0,bottom:10),
-//                    child: Text('About Us',style: TextStyle(color: Colors.black,fontWeight:FontWeight.bold,fontSize: MediaQuery.of(context).size.width/10,fontFamily: 'Montserrat'),),
-//                  ),
-//                  Divider(),
-                ],
+              flex: 4,
+              child:YoutubePlayer(
+                controller: _controllerhomeyt,
+                showVideoProgressIndicator: true,
+                onReady: (){
+                },
               ) ,
             ),
 
+          Divider(thickness: 2,),
           Expanded(
             flex: 2,
             child:
             GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount:1,crossAxisSpacing: 5,childAspectRatio: 16/14),
               scrollDirection: Axis.horizontal,
+              shrinkWrap: true,
               itemBuilder: (_, index) {
                 return Card(
                   color: Color(0xfff47444),
                   child:Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(10.0),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        AssetUtils.drawer_icons[index],
-                        Text(home_titles[index],style: TextStyle(color: Colors.white),)
+                        AssetUtils.home_icons[index],
+                        Text(textUtils.titles[index],style: TextStyle(color: Colors.white,))
                       ],
                     ),
                   ),
                 );
-                  FlatButton.icon(onPressed: (){}, icon: AssetUtils.drawer_icons[index], label: Text(home_titles[index]));
+//                  FlatButton.icon(onPressed: (){}, icon: AssetUtils.drawer_icons[index], label: Text(textUtils.StringUtilsEn[index]));
 //                    Card(
 //
 //                    color: Color(0xfff47444),
@@ -156,35 +151,19 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
 //                    ),
 //                  );
               },
-              itemCount: home_titles.length,
+              itemCount: textUtils.titles.length,
             ),
           ),
           Divider(thickness: 2,),
           Expanded(
-            flex: 3,
+            flex: 4,
             child:CarouselSlider(
                       items: [
-
-                        Image(
-                          image: NetworkImage('https://github.com/sidgan22/saukhyam/blob/master/images/1.JPG'),
-                        ),
-                        Image(
-                          image: NetworkImage('https://github.com/sidgan22/saukhyam/blob/master/images/2.jpg'),
-                        ),
-                        Image(
-                          image: NetworkImage('https://github.com/sidgan22/saukhyam/blob/master/images/3.JPG'),
-                        ),
-                        Image(
-                          image: NetworkImage('https://github.com/sidgan22/saukhyam/blob/master/images/4.JPG'),
-                        ),
-                        Image(
-                          image: NetworkImage('https://github.com/sidgan22/saukhyam/blob/master/images/5.JPG'),
-                        ),
-//                        Image.asset('assets/1.JPG'),
-//                        Image.asset('assets/2.jpg'),
-//                        Image.asset('assets/3.JPG'),
-//                        Image.asset('assets/4.JPG'),
-//                        Image.asset('assets/5.JPG'),
+                        Image.asset('images/1.jpg'),
+                        Image.asset('images/2.jpg'),
+                        Image.asset('images/3.jpg'),
+                        Image.asset('images/4.jpg'),
+                        Image.asset('images/5.jpg'),
                       ],
                       options: CarouselOptions(
                         height: MediaQuery.of(context).size.height/3.25,

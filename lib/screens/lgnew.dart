@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 import 'package:saukhyam/screens/reginfo.dart';
+import 'package:saukhyam/utils/engString.dart';
+import 'package:saukhyam/utils/string_utils.dart';
 
 import '../main.dart';
 import 'home.dart';
@@ -10,7 +12,6 @@ class LGnew extends StatefulWidget {
 }
 
 class _LGnewState extends State<LGnew> {
-
   TextEditingController _emailController=TextEditingController();
   TextEditingController _passController=TextEditingController();
   var _email, _pass;
@@ -63,7 +64,7 @@ class _LGnewState extends State<LGnew> {
                               child: Column(
                                 children: <Widget>[
                                   Text(
-                                    login,
+                                    textUtils.login,
                                     style: TextStyle(
                                         fontFamily: 'Montserrat',
                                         letterSpacing: -3,
@@ -97,7 +98,7 @@ class _LGnewState extends State<LGnew> {
                                     contentPadding: new EdgeInsets.symmetric(vertical: 25.0, horizontal: 10.0),
                                     border: OutlineInputBorder(borderSide: BorderSide(width: 2.0,color: Color(0xff228b22)), borderRadius: BorderRadius.circular(10.0),),
 
-                                    labelText: 'EMAIL',
+                                    labelText: textUtils.email,
                                     labelStyle: TextStyle(
                                         fontFamily: 'Montserrat',
                                         fontWeight: FontWeight.bold,
@@ -119,7 +120,7 @@ class _LGnewState extends State<LGnew> {
                                       ob=!ob;
 
                                     });},icon: Icon(Icons.remove_red_eye),),
-                                    labelText: 'PASSWORD',
+                                    labelText: textUtils.password,
                                     labelStyle: TextStyle(
                                         fontFamily: 'Montserrat',
                                         fontWeight: FontWeight.bold,
@@ -156,7 +157,7 @@ class _LGnewState extends State<LGnew> {
                                         elevation: 7.0,
                                         child: Center(
                                           child: Text(
-                                            'SIGN IN',
+                                            textUtils.signin,
                                             style: TextStyle(
                                                 fontSize: l.size.height / 50,
                                                 color: Colors.white,
@@ -168,7 +169,7 @@ class _LGnewState extends State<LGnew> {
                                 ),
                                 SizedBox(height: 30.0),
                                 FlatButton(
-                                  child:Text("New to Saukhyam?",style: TextStyle(
+                                  child:Text(textUtils.newto,style: TextStyle(
                                     color: Color(0xfff47444),
                                     fontSize: l.size.height/50,
                                     fontFamily: 'Montserrat',),),

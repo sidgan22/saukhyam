@@ -1,18 +1,15 @@
 import 'dart:core';
 
 import 'package:flutter/material.dart';
-
+import 'package:saukhyam/utils/engString.dart';
+var textUtils = StringUtilsEn();
 class StringUtils{
-
-
-
 
   //pg1 - Home
   //pg2 - YSwitch
   //pg3 - Wash wear
   //pg4 - FAQ
   //pg5 - Contact
-
 
   //Login
   static const String login_en = 'Login';
@@ -23,7 +20,8 @@ class StringUtils{
   static const List<String> titles_en = [
     'About Us',
     'Why Switch',
-    'Wash and Wear',
+    'Wash & Wear',
+    'Products',
     'FAQ',
     'Contact Us'
   ];

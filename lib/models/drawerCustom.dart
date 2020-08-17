@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:saukhyam/screens/home.dart';
 import 'package:saukhyam/utils/asset_utils.dart';
 import 'package:saukhyam/utils/string_utils.dart';
 class DrawerC extends StatefulWidget {
@@ -14,19 +15,23 @@ class _DrawerCState extends State<DrawerC> {
       height: MediaQuery.of(context).size.height,
       child: Drawer(
         child: ListView.builder(
-        itemCount: StringUtils.drawer_items.length+1,
+        itemCount: textUtils.titles.length+1,
         itemBuilder: (context,index){
           if(index==0)
           {
-            return DrawerHeader(
-              child: Center(child:Image.asset(AssetUtils.drawer_header)),
-              decoration: BoxDecoration(
-                color: Color(0xfff47444),
+            return GestureDetector(
+              onTap: ()=>Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=> HomePage())),
+              child: DrawerHeader(
+
+                child: Center(child:Image.asset(AssetUtils.drawer_header)),
+                decoration: BoxDecoration(
+                  color: Color(0xfff47444),
+                ),
               ),
             );
           }
           return ListTile(
-            title: Text("${StringUtils.drawer_items[index-1]}"),
+            title: Text("${textUtils.titles[index-1]}"),
             leading: AssetUtils.drawer_icons[index-1],
             onTap: (){
               Navigator.pop(context);

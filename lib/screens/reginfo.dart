@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:saukhyam/screens/lgnew.dart';
+import 'package:saukhyam/utils/string_utils.dart';
 import 'home.dart';
 //import '../services/auth_service.dart';
 import 'package:progress_dialog/progress_dialog.dart';
-
-String x;//Hostel global var for all
 
 class rinfo extends StatelessWidget {
   @override
@@ -88,7 +87,7 @@ class regState extends State<reg> {
                                 children: <Widget>[
 
                                   Text(
-                                    "Register",
+                                    textUtils.reg,
                                     style: TextStyle(
                                         fontFamily: 'Montserrat',
                                         letterSpacing: -3,
@@ -124,7 +123,7 @@ class regState extends State<reg> {
                                 decoration: InputDecoration(
                                     contentPadding: new EdgeInsets.symmetric(vertical: 25.0, horizontal: 10.0),
                                     border: OutlineInputBorder(borderSide: BorderSide(width: 2.0,color: Color(0xff228b22)), borderRadius: BorderRadius.circular(10.0),),
-                                    labelText: 'EMAIL',
+                                    labelText: textUtils.email,
                                     labelStyle: TextStyle(
                                         fontFamily: 'Montserrat',
                                         fontWeight: FontWeight.bold,
@@ -148,7 +147,7 @@ class regState extends State<reg> {
                                       ob=!ob;
 
                                     });},icon: Icon(Icons.remove_red_eye),),
-                                    labelText: 'PASSWORD',
+                                    labelText: textUtils.password,
                                     labelStyle: TextStyle(
                                         fontFamily: 'Montserrat',
                                         fontWeight: FontWeight.bold,
@@ -165,7 +164,7 @@ class regState extends State<reg> {
                                     contentPadding: new EdgeInsets.symmetric(vertical: 25.0, horizontal: 10.0),
                                     border: OutlineInputBorder(borderSide: BorderSide(width: 2.0,color: Color(0xff228b22)), borderRadius: BorderRadius.circular(10.0),),
 
-                                    labelText: 'FULL NAME ',
+                                    labelText: textUtils.fullname,
                                     labelStyle: TextStyle(
                                         fontFamily: 'Montserrat',
                                         fontWeight: FontWeight.bold,
@@ -185,7 +184,7 @@ class regState extends State<reg> {
                                     contentPadding: new EdgeInsets.symmetric(vertical: 25.0, horizontal: 10.0),
                                     border: OutlineInputBorder(borderSide: BorderSide(width: 2.0,color: Color(0xff228b22)), borderRadius: BorderRadius.circular(10.0),),
 
-                                    labelText: 'PHONE NUMBER ',
+                                    labelText: textUtils.phno,
                                     labelStyle: TextStyle(
                                         fontFamily: 'Montserrat',
                                         fontWeight: FontWeight.bold,
@@ -220,7 +219,7 @@ class regState extends State<reg> {
                                       elevation: 7.0,
                                       child: Center(
                                         child: Text(
-                                          'SIGN UP',
+                                          textUtils.signup,
                                           style: TextStyle(
                                               fontSize: l.size.height / 50,
                                               color: Colors.white,
@@ -232,7 +231,7 @@ class regState extends State<reg> {
                               ),
                               SizedBox(height: 12.0),
                               FlatButton(
-                                child:Text("Already a user?",style: TextStyle(
+                                child:Text(textUtils.alreadyuser,style: TextStyle(
                                   color: Color(0xfff47444),
                                   fontSize: l.size.height/50,
                                   fontFamily: 'Montserrat',),),
