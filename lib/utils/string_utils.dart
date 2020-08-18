@@ -2,7 +2,9 @@ import 'dart:core';
 
 import 'package:flutter/material.dart';
 import 'package:saukhyam/utils/engString.dart';
-var textUtils = StringUtilsEn();
+
+
+var textUtils;
 class StringUtils{
 
   //pg1 - Home
@@ -11,39 +13,6 @@ class StringUtils{
   //pg4 - FAQ
   //pg5 - Contact
 
-  //Login
-  static const String login_en = 'Login';
-  static const String login_hi = 'लॉग इन';
-
-
-  //Why Switch Page
-  static const List<String> titles_en = [
-    'About Us',
-    'Why Switch',
-    'Wash & Wear',
-    'Products',
-    'FAQ',
-    'Contact Us'
-  ];
-
-  static const List<String> titles_hi = [
-    'हमारे बारे में',
-    'क्यों स्विच करें',
-    'धो के पहनो',
-    'अधिकतर पूछे जाने वाले सवाल',
-    'संपर्क करें'
-  ];
-
-
-
-  //Drawer Items
-  static const List <String> drawer_items = [
-    "Why Switch",
-    "Wash and Wear",
-    "FAQ",
-    "Contact Us",
-  ];
-  //Drawer Nav
 
 
   //About Us Expandables

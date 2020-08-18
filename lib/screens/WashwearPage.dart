@@ -4,7 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:saukhyam/models/appbar.dart';
 import 'package:saukhyam/models/drawerCustom.dart';
-import 'package:saukhyam/screens/home.dart';
+import 'package:saukhyam/screens/HomePage.dart';
+import 'package:saukhyam/utils/string_utils.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 import '../utils/asset_utils.dart';
@@ -92,7 +93,7 @@ class _WashWearState extends State<WashWear> {
         children: [
           Padding(
             padding:  EdgeInsets.only(left:20.0,top:30.0,right: 20.0),
-            child: Center(child: Text('Wash and Wear',style:TextStyle(fontSize: MediaQuery.of(context).size.width/12,fontFamily: 'Montserrat',fontWeight: FontWeight.bold))),
+            child: Center(child: Text(textUtils.titles[2],style:TextStyle(fontSize: MediaQuery.of(context).size.width/12,fontFamily: 'Montserrat',fontWeight: FontWeight.bold))),
           ),
           Divider(),
           Container(

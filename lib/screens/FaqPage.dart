@@ -13,8 +13,6 @@ class FaqPg extends StatefulWidget {
 }
 
 class _FaqPgState extends State<FaqPg> {
-  static const loremIpsum =
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ";
   List<int> list= [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
   @override
   void initState() {
@@ -33,7 +31,7 @@ class _FaqPgState extends State<FaqPg> {
             children: [
               Padding(
                 padding:  EdgeInsets.only(left:20.0,top:30.0,right: 20.0,bottom:10.0),
-                child: Text('Frequently Asked Questions',style:TextStyle(fontSize: MediaQuery.of(context).size.width/14,fontFamily: 'Montserrat',fontWeight: FontWeight.bold)),
+                child: Text(textUtils.titles[4],style:TextStyle(fontSize: MediaQuery.of(context).size.width/14,fontFamily: 'Montserrat',fontWeight: FontWeight.bold)),
               ),
               Divider(),
               Container(

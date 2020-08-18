@@ -1,29 +1,30 @@
 class StringUtilsHi{
 
   //Login Page
-  String login = "Login";
-  String email = "EMAIL";
-  String password = "PASSWORD";
-  String signin = "SIGN IN";
-  String newto = "New to Saukhyam ?";
+  String login = "लॉग इन करें" ;
+  String email = "ईमेल" ;
+  String password = "पासवर्ड" ;
+  String signin = "साइन इन करें" ;
+  String newto = "क्या आप नए हैं?" ;
 
 
   //Reg Page
-  String reg = "Register";
-  String fullname = 'FULL NAME';
-  String phno = 'PHONE NUMBER';
-  String signup = "SIGN UP";
-  String alreadyuser = "Already a user ?";
+  String reg = "रजिस्टर करें" ;
+  String fullname = 'पूरा नाम' ;
+  String phno = 'फ़ोन नंबर' ;
+  String signup = "साइन इन करें" ;
+  String alreadyuser = "पहले से ही एक उपयोगकर्ता?" ;
 
 
 
   //Home Page
   List<String> titles = [
-    'About Us',
-    'Why Switch',
-    'Wash & Wear',
-    'Products',
-    'FAQ',
-    'Contact Us'
+    'हमारे बारे में',
+    'क्यों स्विच करें',
+    'धोएं और पहनें',
+    'उत्पाद',
+    'सामान्य प्रश्न',
+    'संपर्क करें',
+    'भाषा'
   ];
 }

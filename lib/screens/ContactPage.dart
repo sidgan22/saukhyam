@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:saukhyam/models/appbar.dart';
 import 'package:saukhyam/models/drawerCustom.dart';
+import 'package:saukhyam/utils/string_utils.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -54,7 +55,7 @@ class _ContactPgState extends State<ContactPg> {
             children: [
               Padding(
                 padding:  EdgeInsets.only(left:20.0,top:30.0,right: 20.0,bottom:10.0),
-                child: Center(child: Text('Contact Us',style:TextStyle(fontSize: MediaQuery.of(context).size.width/10,fontFamily: 'Montserrat',fontWeight: FontWeight.bold))),
+                child: Center(child: Text(textUtils.titles[5],style:TextStyle(fontSize: MediaQuery.of(context).size.width/10,fontFamily: 'Montserrat',fontWeight: FontWeight.bold))),
               ),
               Divider(),
               Padding(

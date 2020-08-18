@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:saukhyam/screens/lgnew.dart';
+
+import 'package:saukhyam/screens/LoginPage.dart';
 import 'package:saukhyam/utils/string_utils.dart';
-import 'home.dart';
+import 'HomePage.dart';
 //import '../services/auth_service.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 

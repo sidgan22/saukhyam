@@ -24,6 +24,7 @@ class StringUtilsEn{
     'Wash & Wear',
     'Products',
     'FAQ',
-    'Contact Us'
+    'Contact Us',
+    'Language'
   ];
 }

@@ -7,12 +7,14 @@ import 'package:flutter/widgets.dart';
 import 'package:saukhyam/main.dart';
 import 'package:saukhyam/models/appbar.dart';
 import 'package:saukhyam/models/drawerCustom.dart';
-import 'package:saukhyam/screens/contact.dart';
-import 'package:saukhyam/screens/faqpg.dart';
-import 'package:saukhyam/screens/lgnew.dart';
-import 'package:saukhyam/screens/testimonial.dart';
-import 'package:saukhyam/screens/washwear.dart';
-import 'package:saukhyam/screens/yswitch.dart';
+import 'package:saukhyam/models/langSelect.dart';
+import 'package:saukhyam/screens/AboutPage.dart';
+import 'package:saukhyam/screens/ContactPage.dart';
+import 'package:saukhyam/screens/FaqPage.dart';
+import 'package:saukhyam/screens/LoginPage.dart';
+import 'package:saukhyam/screens/ProductsPage.dart';
+import 'package:saukhyam/screens/WashwearPage.dart';
+import 'package:saukhyam/screens/YSwitchPage.dart';
 import 'package:saukhyam/utils/asset_utils.dart';
 import 'package:saukhyam/utils/string_utils.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
@@ -29,11 +31,13 @@ class HomePg extends StatelessWidget {
       initialRoute: '/',
       routes: {
         // When navigating to the "/" route, build the FirstScreen widget.
-        '/1': (context) => SwitchWhy(),
-        // When navigating to the "/second" route, build the SecondScreen widget.
-        '/2': (context) => WashWear(),
-        '/3': (context) => FaqPg(),
-        '/4': (context) => ContactPg(),
+        '/1': (context) => AbtPg(),
+        '/2': (context) => SwitchWhy(),
+        '/3': (context) => WashWear(),
+        '/4': (context) => ProdPg(),
+        '/5': (context) => FaqPg(),
+        '/6': (context) => ContactPg(),
+        '/7': (context) => LangSel()
       },
       home: HomePage(),
     );
@@ -127,14 +131,19 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
               itemBuilder: (_, index) {
                 return Card(
                   color: Color(0xfff47444),
-                  child:Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        AssetUtils.home_icons[index],
-                        Text(textUtils.titles[index],style: TextStyle(color: Colors.white,))
-                      ],
+                  child:GestureDetector(
+                    onTap: (){
+                      Navigator.pushNamed(context,"/${index+1}");
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          AssetUtils.home_icons[index],
+                          Text(textUtils.titles[index],style: TextStyle(color: Colors.white,))
+                        ],
+                      ),
                     ),
                   ),
                 );
@@ -151,7 +160,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
 //                    ),
 //                  );
               },
-              itemCount: textUtils.titles.length,
+              itemCount: textUtils.titles.length-1,
             ),
           ),
           Divider(thickness: 2,),

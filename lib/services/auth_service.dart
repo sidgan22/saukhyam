@@ -5,10 +5,10 @@
 //import 'package:flutter/cupertino.dart';
 //import 'package:flutter/material.dart';
 //import 'package:flutter/services.dart';
-//import 'package:lw_beta/screens/home.dart';
+//import 'package:lw_beta/screens/HomePage.dart';
 //import 'package:liquid_progress_indicator/liquid_progress_indicator.dart';
 //import 'package:progress_dialog/progress_dialog.dart';
-//import 'package:lw_beta/screens/reginfo.dart';
+//import 'package:lw_beta/screens/RegisterPage.dart';
 //class loadclass extends StatefulWidget {
 //  @override
 //  _loadclassState createState() => _loadclassState();

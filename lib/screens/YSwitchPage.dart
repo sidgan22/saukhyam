@@ -5,7 +5,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:saukhyam/models/appbar.dart';
 import 'package:saukhyam/models/drawerCustom.dart';
-import 'package:saukhyam/screens/home.dart';
+import 'package:saukhyam/screens/HomePage.dart';
+import 'package:saukhyam/utils/string_utils.dart';
 
 class SwitchWhy extends StatefulWidget {
   @override
@@ -22,7 +23,7 @@ class _SwitchWhyState extends State<SwitchWhy> {
           children: [
             Padding(
               padding:  EdgeInsets.only(left:20.0,top:30.0,right: 20.0),
-              child: Center(child: Text('Why Switch',style:TextStyle(fontSize: MediaQuery.of(context).size.width/12,fontFamily: 'Montserrat',fontWeight: FontWeight.bold))),
+              child: Center(child: Text(textUtils.titles[1],style:TextStyle(fontSize: MediaQuery.of(context).size.width/12,fontFamily: 'Montserrat',fontWeight: FontWeight.bold))),
             ),
             Divider(),
             Container(
@@ -33,7 +34,6 @@ class _SwitchWhyState extends State<SwitchWhy> {
                     if (snapshot.hasData) {
                       return Markdown(data: snapshot.data);
                     }
-
                     return Center(
                       child: CircularProgressIndicator(),
                     );

@@ -1,12 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:saukhyam/screens/lgnew.dart';
-import 'package:saukhyam/utils/MainLocalization.dart';
+import 'package:saukhyam/screens/LoginPage.dart';
+import 'package:saukhyam/utils/engString.dart';
+import 'package:saukhyam/utils/hinString.dart';
 import 'package:saukhyam/utils/string_utils.dart';
-import 'screens/reginfo.dart';
-import 'screens/home.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'models/langSelect.dart';
+import 'screens/RegisterPage.dart';
+import 'screens/HomePage.dart';
 
 import 'dart:async';
 import 'services/auth_service.dart';
@@ -16,7 +18,6 @@ enum AuthStatus {
   LOGGED_IN,
 }
 
-String lang_code = 'en';
 
 
 void main() => runApp(MaterialApp(
@@ -54,22 +55,57 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
   Animation _animation;
 
   onDoneLoading() async {
+    checkLang();
 
-      Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => LGnew()));
   }
+  checkLang()
+  async {
+    final prefs = await SharedPreferences.getInstance();
 
+    final lang = prefs.getString('lang') ?? '';
+    if(lang == '')
+      {
+        Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => LangSel()));
+      }
+    else
+      {
+        switch(lang){
+          case 'en': {
+            textUtils = StringUtilsEn();
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => LGnew()));
+          }
+          break;
+          case 'hi':{
+            textUtils = StringUtilsHi();
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => LGnew()));
+          }
+          break;
+          default:{
+            textUtils = StringUtilsEn();
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => LGnew()));
+          }
+        }
+      }
+  }
   @override
   void initState() {
     super.initState();
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]);
-      controller=AnimationController (vsync: this,duration: Duration(milliseconds: 2500));
-    _animation=Tween(begin:0.1,end:1.0).animate(controller);
+      controller=AnimationController (vsync: this,duration: Duration(milliseconds: 2000));
+    _animation=Tween(begin:0.2,end:1.0).animate(controller);
     controller.forward();
-    Timer(Duration(milliseconds: 4000), onDoneLoading);
+
+    Timer(Duration(milliseconds: 3000), onDoneLoading);
   }
   @override
   void dispose() {
