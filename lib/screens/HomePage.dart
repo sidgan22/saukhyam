@@ -129,13 +129,13 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
               scrollDirection: Axis.horizontal,
               shrinkWrap: true,
               itemBuilder: (_, index) {
-                return Card(
-                  color: Color(0xfff47444),
-                  child:GestureDetector(
-                    onTap: (){
-                      Navigator.pushNamed(context,"/${index+1}");
-                    },
-                    child: Padding(
+                return GestureDetector(
+                  onTap: (){
+                    Navigator.pushNamed(context,"/${index+1}");
+                  },
+                  child: Card(
+                    color: Color(0xfff47444),
+                    child:Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
