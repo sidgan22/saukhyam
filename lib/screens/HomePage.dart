@@ -9,6 +9,7 @@ import 'package:saukhyam/models/appbar.dart';
 import 'package:saukhyam/models/drawerCustom.dart';
 import 'package:saukhyam/models/langSelect.dart';
 import 'package:saukhyam/screens/AboutPage.dart';
+import 'package:saukhyam/screens/CategoriesPage.dart';
 import 'package:saukhyam/screens/ContactPage.dart';
 import 'package:saukhyam/screens/FaqPage.dart';
 import 'package:saukhyam/screens/LoginPage.dart';
@@ -34,7 +35,7 @@ class HomePg extends StatelessWidget {
         '/1': (context) => AbtPg(),
         '/2': (context) => SwitchWhy(),
         '/3': (context) => WashWear(),
-        '/4': (context) => ProdPg(),
+        '/4': (context) => CatPg(),
         '/5': (context) => FaqPg(),
         '/6': (context) => ContactPg(),
         '/7': (context) => LangSel()
