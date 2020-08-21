@@ -10,12 +10,6 @@ class CatPg extends StatefulWidget {
   _CatPgState createState() => _CatPgState();
 }
 
-List<String> categories = [
-  'Saukhyam Essential Pad Packs',
-  'Saukhyam Night Pads & Panty Liners',
-  'Saukhyam Pouch',
-  'Saukhyam Maternity Pads'
-];
 
 class _CatPgState extends State<CatPg> {
   @override
@@ -29,7 +23,7 @@ class _CatPgState extends State<CatPg> {
             alignment: Alignment.topCenter,
             child: Padding(
               padding:  EdgeInsets.only(left:20.0,top:30.0,right: 20.0,bottom:10.0),
-              child: Text("Categories",style:TextStyle(fontSize: MediaQuery.of(context).size.width/10,fontFamily: 'Montserrat',fontWeight: FontWeight.bold)),
+              child: Text(textUtils.cat,style:TextStyle(fontSize: MediaQuery.of(context).size.width/10,fontFamily: 'Montserrat',fontWeight: FontWeight.bold)),
             ),
           ),
           SizedBox(height: 20,),
@@ -38,13 +32,13 @@ class _CatPgState extends State<CatPg> {
           Container(
             height: MediaQuery.of(context).size.height/1.5,
             child: ListView.builder(
-                itemCount: categories.length,
+                itemCount: textUtils.categories.length,
                 itemBuilder: (context,index){
                   return Column(
                     children: [
                       ListTile(
                         trailing: Icon(Icons.chevron_right),
-                        title: Text(categories[index],style: TextStyle(fontWeight: FontWeight.bold),),
+                        title: Text(textUtils.categories[index],style: TextStyle(fontWeight: FontWeight.bold),),
 
                         onTap: (){
                           Navigator.push(context, MaterialPageRoute(builder: (context)=> ProdPg()));

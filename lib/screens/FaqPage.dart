@@ -27,22 +27,38 @@ class _FaqPgState extends State<FaqPg> {
     return Scaffold(
         appBar: AppBarCustom(context),
         drawer: DrawerC() ,
-        body: Column(
+        body: Stack(
             children: [
               Padding(
                 padding:  EdgeInsets.only(left:20.0,top:30.0,right: 20.0,bottom:10.0),
-                child: Text(textUtils.titles[4],style:TextStyle(fontSize: MediaQuery.of(context).size.width/14,fontFamily: 'Montserrat',fontWeight: FontWeight.bold)),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(textUtils.titles[4],style:TextStyle(fontSize: MediaQuery.of(context).size.width/14,fontFamily: 'Montserrat',fontWeight: FontWeight.bold)),
+                    ),
+                    Divider()
+                  ],
+                ),
               ),
-              Divider(),
-              Container(
-                
-                height: MediaQuery.of(context).size.height/1.55,
+              Padding(
+                padding:  EdgeInsets.only(top: MediaQuery.of(context).size.height/10),
                 child: ListView.builder(
                     itemCount: StringUtils.exp.length,
                     itemBuilder: (context,index){
-                        return ExpandWidg(index);
+                      return ExpandWidg(index);
                     }),
               ),
+//
+//              Container(
+//                padding: EdgeInsets.only(left:20.0,top:100.0,right: 20.0,bottom:10.0),
+//                height: MediaQuery.of(context).size.height/1.55,
+//                child: ListView.builder(
+//                    itemCount: StringUtils.exp.length,
+//                    itemBuilder: (context,index){
+//                        return ExpandWidg(index);
+//                    }),
+//              ),
               Divider(),
 
             ]));

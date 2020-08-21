@@ -53,7 +53,7 @@ class _WashWearState extends State<WashWear> {
     YoutubePlayerController _controller1 = YoutubePlayerController(
       initialVideoId: 'G0TrjsnZpPw',
       flags: YoutubePlayerFlags(
-        autoPlay: true,
+        autoPlay: false,
         mute: false,
         loop: true,
       ),
@@ -89,68 +89,212 @@ class _WashWearState extends State<WashWear> {
     return Scaffold(
       appBar: AppBarCustom(context),
       drawer: DrawerC(),
-      body: ListView(
+      body: Stack(
         children: [
           Padding(
-            padding:  EdgeInsets.only(left:20.0,top:30.0,right: 20.0),
-            child: Center(child: Text(textUtils.titles[2],style:TextStyle(fontSize: MediaQuery.of(context).size.width/12,fontFamily: 'Montserrat',fontWeight: FontWeight.bold))),
-          ),
-          Divider(),
-          Container(
-              height: MediaQuery.of(context).size.height/2,
-              child: Markdown(
-                  data:textUtils.washwear)),
-          SizedBox(height: 20,),
-          Container(
-            height: MediaQuery.of(context).size.height/2.85,
+            padding:  EdgeInsets.only(left:20.0,top:30.0,right: 20.0,bottom:10.0),
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(8),
-                  child: Text(textUtils.yt1,style: TextStyle(fontWeight: FontWeight.bold),),
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(textUtils.titles[2],style:TextStyle(fontSize: MediaQuery.of(context).size.width/14,fontFamily: 'Montserrat',fontWeight: FontWeight.bold)),
                 ),
-                YoutubePlayer(
-                  controller: _controller1,
-                  showVideoProgressIndicator: true,
-                  onReady: (){
-                  },
-                ),
+                Divider()
               ],
             ),
           ),
-          Container(
-            height: MediaQuery.of(context).size.height/2.85,
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8),
-                  child: Text(textUtils.yt2,style: TextStyle(fontWeight: FontWeight.bold),),
+          Padding(
+            padding:  EdgeInsets.only(top:MediaQuery.of(context).size.height/10),
+            child: Expanded(
+              child: Container(
+                height: MediaQuery.of(context).size.height/2.5,
+                child: PageView(
+                  children: [
+                    Markdown(
+                        data:textUtils.washwear,
+                    ),
+                    Markdown(
+                      data: textUtils.washwear2),
+                  ],
                 ),
-                YoutubePlayer(
-                  controller: _controller2,
-                  showVideoProgressIndicator: true,
-                  onReady: (){
-                  },
-                ),
-              ],
+              ),
             ),
-          ),Container(
-            height: MediaQuery.of(context).size.height/2.85,
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8),
-                  child: Text(textUtils.yt3,style: TextStyle(fontWeight: FontWeight.bold),),
+          ),
+
+          Padding(
+            padding: EdgeInsets.only(top:MediaQuery.of(context).size.height/2.05),
+              
+            child: Expanded(
+              child: Container(
+                child: PageView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    Container(
+                      width: 200,
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8),
+                            child: Text(textUtils.yt1,style: TextStyle(fontWeight: FontWeight.bold),),
+                          ),
+                          YoutubePlayer(
+                            controller: _controller1,
+                            showVideoProgressIndicator: true,
+                            onReady: (){
+                            },
+                          ),
+                          Divider(),
+                          Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: Center(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(Icons.chevron_left),
+                                  Text('Swipe'),
+                                  Icon(Icons.chevron_right),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      width: 200,
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8),
+                            child: Text(textUtils.yt2,style: TextStyle(fontWeight: FontWeight.bold),),
+                          ),
+                          YoutubePlayer(
+                            controller: _controller2,
+                            showVideoProgressIndicator: true,
+                            onReady: (){
+                            },
+                          ),
+                          Divider(),
+                          Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: Center(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(Icons.chevron_left),
+                                  Text('Swipe'),
+                                  Icon(Icons.chevron_right),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      width: 200,
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8),
+                            child: Text(textUtils.yt3,style: TextStyle(fontWeight: FontWeight.bold),),
+                          ),
+                          YoutubePlayer(
+                            controller: _controller3,
+                            showVideoProgressIndicator: true,
+                            onReady: (){
+                            },
+                          ),
+                          Divider(),
+                          Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: Center(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(Icons.chevron_left),
+                                  Text('Swipe'),
+                                  Icon(Icons.chevron_right),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
-                YoutubePlayer(
-                  controller: _controller3,
-                  showVideoProgressIndicator: true,
-                  onReady: (){
-                  },
-                ),
-              ],
-            ),
-          )
+              ),
+            )
+//            ListView(
+//              scrollDirection: Axis.horizontal,
+//              children: [
+//                Padding(
+//                  padding: const EdgeInsets.all(8),
+//                  child: Text(textUtils.yt1,style: TextStyle(fontWeight: FontWeight.bold),),
+//                ),
+//                YoutubePlayer(
+//                  controller: _controller1,
+//                  showVideoProgressIndicator: true,
+//                  onReady: (){
+//                  },
+//                ),
+//                Padding(
+//                  padding: const EdgeInsets.all(8),
+//                  child: Text(textUtils.yt2,style: TextStyle(fontWeight: FontWeight.bold),),
+//                ),
+//                YoutubePlayer(
+//                  controller: _controller2,
+//                  showVideoProgressIndicator: true,
+//                  onReady: (){
+//                  },
+//                ),
+//                Padding(
+//                  padding: const EdgeInsets.all(8),
+//                  child: Text(textUtils.yt3,style: TextStyle(fontWeight: FontWeight.bold),),
+//                ),
+//                YoutubePlayer(
+//                  controller: _controller3,
+//                  showVideoProgressIndicator: true,
+//                  onReady: (){
+//                  },
+//                ),
+//              ],
+//            ),
+          ),
+//          Container(
+//            height: MediaQuery.of(context).size.height/2.85,
+//            child: Column(
+//              children: [
+//                Padding(
+//                  padding: const EdgeInsets.all(8),
+//                  child: Text(textUtils.yt2,style: TextStyle(fontWeight: FontWeight.bold),),
+//                ),
+//                YoutubePlayer(
+//                  controller: _controller2,
+//                  showVideoProgressIndicator: true,
+//                  onReady: (){
+//                  },
+//                ),
+//              ],
+//            ),
+//          ),Container(
+//            height: MediaQuery.of(context).size.height/2.85,
+//            child: Column(
+//              children: [
+//                Padding(
+//                  padding: const EdgeInsets.all(8),
+//                  child: Text(textUtils.yt3,style: TextStyle(fontWeight: FontWeight.bold),),
+//                ),
+//                YoutubePlayer(
+//                  controller: _controller3,
+//                  showVideoProgressIndicator: true,
+//                  onReady: (){
+//                  },
+//                ),
+//              ],
+//            ),
+//          )
         ],
       ),
     );

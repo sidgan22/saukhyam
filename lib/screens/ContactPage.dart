@@ -81,7 +81,7 @@ class _ContactPgState extends State<ContactPg> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('For more details, please visit',style: TextStyle(
+                    Text(textUtils.moredeets,style: TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.bold
                     ),),

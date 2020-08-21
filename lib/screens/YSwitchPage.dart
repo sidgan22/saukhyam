@@ -19,17 +19,30 @@ class _SwitchWhyState extends State<SwitchWhy> {
     return Scaffold(
         appBar: AppBarCustom(context),
         drawer: DrawerC() ,
-        body: ListView(
+        body: Stack(
           children: [
             Padding(
-              padding:  EdgeInsets.only(left:20.0,top:30.0,right: 20.0),
-              child: Center(child: Text(textUtils.titles[1],style:TextStyle(fontSize: MediaQuery.of(context).size.width/12,fontFamily: 'Montserrat',fontWeight: FontWeight.bold))),
+              padding:  EdgeInsets.only(left:20.0,top:30.0,right: 20.0,bottom:10.0),
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(textUtils.titles[1],style:TextStyle(fontSize: MediaQuery.of(context).size.width/14,fontFamily: 'Montserrat',fontWeight: FontWeight.bold)),
+                  ),
+                  Divider()
+                ],
+              ),
             ),
-            Divider(),
-            Container(
-              height: MediaQuery.of(context).size.height/1.3,
+            Padding(
+              padding:  EdgeInsets.only(top: MediaQuery.of(context).size.height/10),
               child: Markdown(data:textUtils.yswitch)
-            )
+            ),
+//
+//            Divider(),
+//            Container(
+//              height: MediaQuery.of(context).size.height/1.3,
+//              child: Markdown(data:textUtils.yswitch)
+//            )
 
           ],
         )

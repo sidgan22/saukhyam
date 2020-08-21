@@ -68,7 +68,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
   YoutubePlayerController _controllerhomeyt = YoutubePlayerController(
     initialVideoId: 'vYUlDQMGHDg',
     flags: YoutubePlayerFlags(
-      autoPlay: true,
+      autoPlay: false,
       mute: false,
       loop: true,
     ),
@@ -109,9 +109,6 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
               child:YoutubePlayer(
                 controller: _controllerhomeyt,
                 showVideoProgressIndicator: true,
-                bottomActions: [
-
-                ],
                 onReady: (){
                 },
               ) ,

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:saukhyam/main.dart';
 import 'package:saukhyam/screens/LoginPage.dart';
-import 'package:saukhyam/utils/engString.dart';
-import 'package:saukhyam/utils/hinString.dart';
+import 'file:///C:/Users/sidga/AndroidStudioProjects/saukhyam/lib/lang/engString.dart';
+import 'package:saukhyam/lang/hinString.dart';
 import 'package:saukhyam/utils/string_utils.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

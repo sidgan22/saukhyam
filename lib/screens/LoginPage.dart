@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 import 'package:saukhyam/screens/RegisterPage.dart';
-import 'package:saukhyam/utils/engString.dart';
+import 'file:///C:/Users/sidga/AndroidStudioProjects/saukhyam/lib/lang/engString.dart';
 import 'package:saukhyam/utils/string_utils.dart';
 
 import '../main.dart';
