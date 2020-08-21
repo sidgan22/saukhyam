@@ -100,13 +100,6 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
 //          onPressed: (){},
 //          label: Text(''),
 //        ),
-      endDrawer: UserAccountsDrawerHeader(
-        accountName: Text(uname),
-        onDetailsPressed: (){
-          Navigator.of(context).push(MaterialPageRoute(builder: (context)=>LGnew()));
-        },
-
-      ),
       drawer:DrawerC(),
 //
       body: Column(
@@ -116,6 +109,9 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
               child:YoutubePlayer(
                 controller: _controllerhomeyt,
                 showVideoProgressIndicator: true,
+                bottomActions: [
+
+                ],
                 onReady: (){
                 },
               ) ,

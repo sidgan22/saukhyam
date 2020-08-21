@@ -28,16 +28,7 @@ class _SwitchWhyState extends State<SwitchWhy> {
             Divider(),
             Container(
               height: MediaQuery.of(context).size.height/1.3,
-              child: FutureBuilder(
-                  future: rootBundle.loadString("assets/whySwitch.md"),
-                  builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
-                    if (snapshot.hasData) {
-                      return Markdown(data: snapshot.data);
-                    }
-                    return Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  }),
+              child: Markdown(data:textUtils.yswitch)
             )
 
           ],

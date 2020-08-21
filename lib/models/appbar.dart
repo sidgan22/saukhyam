@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:saukhyam/screens/HomePage.dart';
+import 'package:saukhyam/screens/LoginPage.dart';
 
 Widget AppBarCustom(BuildContext context)
 {
@@ -14,7 +15,8 @@ Widget AppBarCustom(BuildContext context)
     backgroundColor: Color(0xfff47444),
 
     actions: [
-      FlatButton.icon(onPressed: ()=> {}, icon: Icon(Icons.person,color: Colors.white,), label: Text(''))
+      FlatButton.icon(onPressed: ()=> {
+      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>LGnew()))}, icon: Icon(Icons.person,color: Colors.white,), label: Text(''))
     ],
   );
 
