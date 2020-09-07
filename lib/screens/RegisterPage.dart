@@ -1,8 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 
 import 'package:saukhyam/screens/LoginPage.dart';
+import 'package:saukhyam/services/auth_service.dart';
 import 'package:saukhyam/utils/string_utils.dart';
 import 'HomePage.dart';
+import 'package:snack/snack.dart';
 //import '../services/auth_service.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 
@@ -25,16 +29,13 @@ class reg extends StatefulWidget {
 
 class regState extends State<reg> {
 
-  String _hostel,_name,_phno,_email,_pass;
-  int _rno;bool ob=true;
+  String email,pass1,pass2;
+  int _rno;bool ob1=true,ob2=true;
 
   final _formKey = GlobalKey<FormState>();
-  TextEditingController _nameController=TextEditingController();
-  TextEditingController _phController=TextEditingController();
-  TextEditingController _rnController=TextEditingController();
-  TextEditingController _hostelController=TextEditingController();
   TextEditingController _emailController=TextEditingController();
-  TextEditingController _passController=TextEditingController();
+  TextEditingController _passController1=TextEditingController();
+  TextEditingController _passController2=TextEditingController();
   int value;//_isMale is flag for male or female
   bool loading=false;
 
@@ -43,12 +44,13 @@ class regState extends State<reg> {
     // TODO: implement initState
     super.initState();
   }
-  ProgressDialog pr;
+  ProgressDialog pr1;
   @override
   Widget build(BuildContext context) {
-    pr = new ProgressDialog(context);pr = new ProgressDialog(context,type: ProgressDialogType.Normal, isDismissible: true, showLogs: true);
-    pr.style(
-        message: 'Signing Up...',
+    pr1 = new ProgressDialog(context);
+    pr1 = new ProgressDialog(context,type: ProgressDialogType.Normal, isDismissible: true, showLogs: false);
+    pr1.style(
+        message: 'Registering...',
         borderRadius: 10.0,
         backgroundColor: Colors.white,
         progressWidget: CircularProgressIndicator(),
@@ -110,7 +112,7 @@ class regState extends State<reg> {
                           child: Column(
                             children: <Widget>[
                               TextFormField(
-                                onSaved: (value)=>_email=value,
+                                onSaved: (value)=>email=value,
                                 validator: (val) {
                                   if(RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(val))
                                   {
@@ -136,16 +138,16 @@ class regState extends State<reg> {
                               SizedBox(height: 12.0),
                               TextFormField(
 
-                                onSaved: (value)=>_pass=value,
-                                validator: (val) => val.length < 6 ? 'Enter a pass atleast 6 characters!' : null,
-                                controller: _passController,
-                                obscureText: ob,
+                                onSaved: (value)=>pass1=value,
+                                validator: (val) => val.length < 6 ? 'Enter a pass atleast 6 characters!' : val != _passController2.text ? "Passwords don't match": null,
+                                controller: _passController1,
+                                obscureText: ob1,
                                 decoration: InputDecoration(
                                     contentPadding: new EdgeInsets.symmetric(vertical: 25.0, horizontal: 10.0),
                                     border: OutlineInputBorder(borderSide: BorderSide(width: 2.0,color: Color(0xff228b22)), borderRadius: BorderRadius.circular(10.0),),
 
                                     suffixIcon: IconButton(disabledColor:Colors.grey,onPressed: (){setState(() {
-                                      ob=!ob;
+                                      ob1=!ob1;
 
                                     });},icon: Icon(Icons.remove_red_eye),),
                                     labelText: textUtils.password,
@@ -157,59 +159,55 @@ class regState extends State<reg> {
                                         borderSide: BorderSide(color: Colors.green)),),
                               ),
                               SizedBox(height: 12.0),
-                              TextFormField(
-                                onSaved: (value)=>_name=value,
-                                validator: (val) => val.length < 4 ? 'Enter a name atleast 4 characters!' : null,
-                                controller: _nameController,
-                                decoration: InputDecoration(
-                                    contentPadding: new EdgeInsets.symmetric(vertical: 25.0, horizontal: 10.0),
-                                    border: OutlineInputBorder(borderSide: BorderSide(width: 2.0,color: Color(0xff228b22)), borderRadius: BorderRadius.circular(10.0),),
-
-                                    labelText: textUtils.fullname,
-                                    labelStyle: TextStyle(
-                                        fontFamily: 'Montserrat',
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.grey),
-                                    focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(color: Colors.green))),
-                              ),
-
-
-
                               SizedBox(height: 12.0),
                               TextFormField(
-                                controller: _phController,
-                                validator: (val) => val.length !=10 ? 'Enter 10 digits!' : null,
-                                keyboardType: TextInputType.number,
-                                decoration: InputDecoration(
-                                    contentPadding: new EdgeInsets.symmetric(vertical: 25.0, horizontal: 10.0),
-                                    border: OutlineInputBorder(borderSide: BorderSide(width: 2.0,color: Color(0xff228b22)), borderRadius: BorderRadius.circular(10.0),),
 
-                                    labelText: textUtils.phno,
-                                    labelStyle: TextStyle(
-                                        fontFamily: 'Montserrat',
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.grey),
-                                    focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(color: Colors.green))),
+                                onSaved: (value)=>pass2=value,
+                                validator: (val) => val.length < 6 ? 'Enter a pass atleast 6 characters!' : val != _passController1.text ? "Passwords don't match" : null,
+                                controller: _passController2,
+                                obscureText: ob2,
+                                decoration: InputDecoration(
+                                  contentPadding: new EdgeInsets.symmetric(vertical: 25.0, horizontal: 10.0),
+                                  border: OutlineInputBorder(borderSide: BorderSide(width: 2.0,color: Color(0xff228b22)), borderRadius: BorderRadius.circular(10.0),),
+
+                                  suffixIcon: IconButton(disabledColor:Colors.grey,onPressed: (){setState(() {
+                                    ob2=!ob2;
+
+                                  });},icon: Icon(Icons.remove_red_eye),),
+                                  labelText: textUtils.password,
+                                  labelStyle: TextStyle(
+                                      fontFamily: 'Montserrat',
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.grey),
+                                  focusedBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(color: Colors.green)),),
                               ),
+                              SizedBox(height: 12.0),
                               SizedBox(height: l.size.height / 22),
                               FlatButton(
                                 onPressed: () async{
-                                  BuildContext ctx=context;
                                   //add and register
 //                                var ah=Auth();
-                                  if(_formKey.currentState.validate())
-                                  {
-//                                  await pr.show();
+                                  if(_formKey.currentState.validate()){
+                                    await pr1.show();
+
+                                    var em =_emailController.text;
+                                    var pa = _passController1.text;
+                                    var res = json.decode(await register(em, pa));
+
+  print(res['_flash_messenger']['success'].toString());
+                                    pr1.hide();
+                                    if(res['_flash_messenger']['success'].toString() == '[]')
+                                    {
+//                                      print(res['error_description']);
+                                      _showDialogN(context,res['error_description'].toString());
+                                    }
+                                    else
+                                    {
+                                      Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context)=> LGnew()), (route) => false);
+                                    }
+
                                   }
-//                                var xxx=await ah.createAcc(_emailController.text, _passController.text, context,_hostelController.text,_nameController.text,_isMale,_rnController.text,_phController.text,pr);
-//                                print("Error code = asdadasd");
-//                                print(xxx);
-//                                pr.hide().then((isHidden){});
-
-
-                                  //Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=> home()));
                                 },
                                 child: Container(
                                     height: l.size.height / 16,
@@ -236,7 +234,9 @@ class regState extends State<reg> {
                                   color: Color(0xfff47444),
                                   fontSize: l.size.height/50,
                                   fontFamily: 'Montserrat',),),
-                                onPressed: (){Navigator.of(context).pushReplacement(MaterialPageRoute(builder:(context)=>LGnew()));
+                                onPressed: () async {
+//
+                                  Navigator.of(context).pushReplacement(MaterialPageRoute(builder:(context)=>LGnew()));
                                 },
                               ),
                             ],
@@ -251,115 +251,27 @@ class regState extends State<reg> {
       ),
     );
   }
-//  Future<void> _submit()
-//  async {
-//    print(_emailController.text);
-//    final form = _formKey.currentState;
-//    if(form.validate())
-//      {
-//        setState(() {
-//          _email=_emailController.text;
-//          _pass=_passController.text;
-//          _name=_nameController.text;
-//          _phno=_phController.text;
-//          _hostel=_hostelController.text;
-//          _rno=int.parse(_rnController.text);
-//        });
-//          await createRec();
-//          Navigator.pushReplacement(context, new MaterialPageRoute(builder: (context) => home()));
-//      }
-//  }
-//  void createRec() async
-//  {
-//    _submit();
-//    final databaseReference = Firestore.instance;
-//    final o =1;
-//    FirebaseUser user = await auth_handler.getCurrentUser();
-//    final uid = user.uid;
-//    await databaseReference.collection("users")
-//        .document(uid)
-//        .setData({
-//      'email': _email,
-//      'name': _name,
-//      'room': _rno,
-//      'hostel': _hostel,
-//      'oid': o,
-//      'phno': _phno
-//        });
-////
-//    DocumentReference ref = await databaseReference.collection("users")
-//        .add({
-//        });
-//    print(ref.documentID);
-//  }
-
-
-
-
-  _buildSelect({String text, Color background, Color textColor,Color other}) {
-    return Stack(
-      children: <Widget>[
-        Container(
-          height: 50,
-          width: 50,
-          decoration: BoxDecoration(
-              border: Border.all(
-                color: other,
-                width: 4,
-              ),
-              borderRadius: BorderRadius.circular(75.0),color: background),
-          child: Center(
-              child: Text(
-                text,
-                style: TextStyle(color: textColor, fontSize: 25.0),
-              )),
-        )
-      ],
-    );
-  }
-  buildlist(BuildContext context,List<String> s) {
-    return showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            title: Text('Choose your hostel'),
-            content: Container(
-              width: double.maxFinite,
-              height: 300.0,
-              child: ListView(
-                padding: EdgeInsets.only(left:8.0,right:8.0,top:20.0),
-                //map List of our data to the ListView
-                children: s.map((data) => InkWell(onTap: (){setText(data, context);},child:Container(
-                  child: Column(
-                    children: <Widget>[
-                      Row(
-                        children: <Widget>[
-                          Icon(Icons.home),
-                          Text(" "+data),
-                        ],
-                      ),
-                      SizedBox(height:40.0,),
-                    ],
-                  ),
-                ),)).toList(),
-              ),
+  void _showDialogN(context,String msg) {
+    // flutter defined function
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        // return object of type Dialog
+        return AlertDialog(
+          title: new Text("Try again."),
+          content: new Text(msg.split(':').elementAt(1)),
+          actions: <Widget>[
+            // usually buttons at the bottom of the dialog
+            new FlatButton(
+              child: new Text("OK"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
             ),
-            actions: <Widget>[
-              new FlatButton(
-                child: new Text('CANCEL'),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              )
-            ],
-          );
-        });
-  }
-  void setText(String s,BuildContext ctx)
-  {
-    _hostelController.text=s;
-    Future.delayed(Duration(seconds: 1));
-    Navigator.pop(ctx);
+          ],
+        );
+      },
+    );
   }
 
 

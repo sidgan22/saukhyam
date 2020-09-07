@@ -1,8 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 import 'package:saukhyam/screens/RegisterPage.dart';
+import 'package:saukhyam/services/auth_service.dart';
 import 'file:///C:/Users/sidga/AndroidStudioProjects/saukhyam/lib/lang/engString.dart';
 import 'package:saukhyam/utils/string_utils.dart';
+import 'package:snack/snack.dart';
 
 import '../main.dart';
 import 'HomePage.dart';
@@ -21,21 +25,22 @@ class _LGnewState extends State<LGnew> {
   @override
   Widget build(BuildContext context) {
     MediaQueryData l;
-//    pr = new ProgressDialog(context);pr = new ProgressDialog(context,type: ProgressDialogType.Normal, isDismissible: false, showLogs: false);
-//    pr.style(
-//        message: 'Logging In...',
-//        borderRadius: 10.0,
-//        backgroundColor: Colors.white,
-//        progressWidget: CircularProgressIndicator(),
-//        elevation: 10.0,
-//        insetAnimCurve: Curves.easeInOut,
-//        progress: 0.0,
-//        maxProgress: 100.0,
-//        progressTextStyle: TextStyle(
-//            color: Colors.black, fontSize: 13.0, fontWeight: FontWeight.w400),
-//        messageTextStyle: TextStyle(
-//            color: Colors.black, fontSize: 19.0, fontWeight: FontWeight.w600)
-//    );
+    pr = new ProgressDialog(context);
+    pr = new ProgressDialog(context,type: ProgressDialogType.Normal, isDismissible: false, showLogs: false);
+    pr.style(
+        message: 'Logging In...',
+        borderRadius: 10.0,
+        backgroundColor: Colors.white,
+        progressWidget: CircularProgressIndicator(),
+        elevation: 10.0,
+        insetAnimCurve: Curves.easeInOut,
+        progress: 0.0,
+        maxProgress: 100.0,
+        progressTextStyle: TextStyle(
+            color: Colors.black, fontSize: 13.0, fontWeight: FontWeight.w400),
+        messageTextStyle: TextStyle(
+            color: Colors.black, fontSize: 19.0, fontWeight: FontWeight.w600)
+    );
     l = MediaQuery.of(context);
     return Scaffold(
       body: SafeArea(
@@ -134,19 +139,28 @@ class _LGnewState extends State<LGnew> {
                                 FlatButton(
                                   onPressed: () async{
 //                                  var ah = Auth();
-//                                  if(_formKey.currentState.validate()){
-//                                    await pr.show();
-//
-                                      var em=_emailController.text;
-                                      var pa= _passController.text;
-//                                    await ah.signInNow(em, pa, context,pr);
+                                  if(_formKey.currentState.validate()){
+                                    await pr.show();
 
-//                                  }
+                                      var em =_emailController.text;
+                                      var pa = _passController.text;
+                                      var res = json.decode(await login(em, pa));
 
+
+                                    pr.hide();
+                                    if(res['result']==false)
+                                        {
+                                          _showDialogN(context,res['_flash_messenger']['error'].toString());
+                                        }
+                                      else
+                                        {
+                                          Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context)=> HomePg()), (route) => false);
+                                        }
+
+                                  }
                                     //add and register
                                     //  _submit();
 
-                                    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=> HomePg()));
                                   },
                                   child: Container(
                                       height: l.size.height / 16,
@@ -189,19 +203,19 @@ class _LGnewState extends State<LGnew> {
       ),
     );
   }
-  void _showDialogN(context) {
+  void _showDialogN(context,String msg) {
     // flutter defined function
     showDialog(
       context: context,
       builder: (BuildContext context) {
         // return object of type Dialog
         return AlertDialog(
-          title: new Text("Error signing you in."),
-          content: new Text("Wrong email/password."),
+          title: new Text("Try again."),
+          content: new Text(msg.substring(1,msg.length-1)),
           actions: <Widget>[
             // usually buttons at the bottom of the dialog
             new FlatButton(
-              child: new Text("Close"),
+              child: new Text("OK"),
               onPressed: () {
                 Navigator.of(context).pop();
               },

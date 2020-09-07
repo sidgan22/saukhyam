@@ -31,6 +31,9 @@ dependencies:
   flutter_markdown: ^0.4.3
   youtube_player_flutter: ^7.0.0+7
   shared_preferences: ^0.5.8
+  http: ^0.12.2
+  snack: ^1.0.4
+
 
 
 
