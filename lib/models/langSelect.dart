@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:saukhyam/main.dart';
+import 'package:saukhyam/screens/HomePage.dart';
 import 'package:saukhyam/screens/LoginPage.dart';
 import 'file:///C:/Users/sidga/AndroidStudioProjects/saukhyam/lib/lang/engString.dart';
 import 'package:saukhyam/lang/hinString.dart';
@@ -38,7 +39,7 @@ class _LangSelState extends State<LangSel> {
                               textUtils = StringUtilsEn();
                               Navigator.pushReplacement(
                                   context,
-                                  MaterialPageRoute(builder: (context) => LGnew()));
+                                  MaterialPageRoute(builder: (context) => HomePg()));
                             },
                             leading: Icon(Icons.language),
                             title: Text("English"),
@@ -52,7 +53,7 @@ class _LangSelState extends State<LangSel> {
                               textUtils = StringUtilsHi();
                               Navigator.pushReplacement(
                                   context,
-                                  MaterialPageRoute(builder: (context) => LGnew()));
+                                  MaterialPageRoute(builder: (context) => HomePg()));
                             },
                             leading: Icon(Icons.language),
                             title: Text("हिन्दी"),

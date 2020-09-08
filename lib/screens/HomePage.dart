@@ -51,6 +51,20 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
+YoutubePlayerController controllerhomeyt = YoutubePlayerController(
+  initialVideoId: 'vYUlDQMGHDg',
+  flags: YoutubePlayerFlags(
+    autoPlay: false,
+    mute: false,
+    loop: true,
+  ),
+);
+//Youtube Video
+bool isPlayerReady1 = false;
+PlayerState playerState1;
+YoutubeMetaData videoMetaData1;
+
+
 
 
 class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin{
@@ -61,20 +75,6 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
   var uemail = "sidgan22@gmail.com";
 
 
-  //Youtube Video
-  bool _isPlayerReady1 = false;
-  PlayerState _playerState1;
-  YoutubeMetaData _videoMetaData1;
-  YoutubePlayerController _controllerhomeyt = YoutubePlayerController(
-    initialVideoId: 'vYUlDQMGHDg',
-    flags: YoutubePlayerFlags(
-      autoPlay: false,
-      mute: false,
-      loop: true,
-    ),
-  );
-
-
 
 
   @override
@@ -82,8 +82,8 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
     // TODO: implement initState
     super.initState();
 
-    _videoMetaData1 = const YoutubeMetaData();
-    _playerState1 = PlayerState.unknown;
+    videoMetaData1 = const YoutubeMetaData();
+    playerState1 = PlayerState.unknown;
     _animationController = AnimationController(vsync: this ,duration: Duration(milliseconds: 700),reverseDuration: Duration(milliseconds: 700));
   }
   final scaffKey = GlobalKey<ScaffoldState>();
@@ -107,9 +107,13 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
             Expanded(
               flex: 4,
               child:YoutubePlayer(
-                controller: _controllerhomeyt,
+                controller: controllerhomeyt,
                 showVideoProgressIndicator: true,
                 onReady: (){
+                },
+                onEnded: (data)
+                {
+                  controllerhomeyt.pause();
                 },
               ) ,
             ),
@@ -125,6 +129,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
               itemBuilder: (_, index) {
                 return GestureDetector(
                   onTap: (){
+                    controllerhomeyt.pause();
                     Navigator.pushNamed(context,"/${index+1}");
                   },
                   child: Card(

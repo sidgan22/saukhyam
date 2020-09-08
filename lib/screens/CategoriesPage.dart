@@ -26,7 +26,6 @@ class _CatPgState extends State<CatPg> {
               child: Text(textUtils.cat,style:TextStyle(fontSize: MediaQuery.of(context).size.width/10,fontFamily: 'Montserrat',fontWeight: FontWeight.bold)),
             ),
           ),
-          SizedBox(height: 20,),
           Divider(thickness: 2,),
           SizedBox(height: 20,),
           Container(

@@ -6,6 +6,7 @@ import 'package:saukhyam/screens/RegisterPage.dart';
 import 'package:saukhyam/services/auth_service.dart';
 import 'file:///C:/Users/sidga/AndroidStudioProjects/saukhyam/lib/lang/engString.dart';
 import 'package:saukhyam/utils/string_utils.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:snack/snack.dart';
 
 import '../main.dart';
@@ -154,6 +155,10 @@ class _LGnewState extends State<LGnew> {
                                         }
                                       else
                                         {
+
+                                          final prefs = await SharedPreferences.getInstance();
+                                          prefs.setString('email',_emailController.text);
+                                          prefs.setString('pass',_passController.text);
                                           Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context)=> HomePg()), (route) => false);
                                         }
 

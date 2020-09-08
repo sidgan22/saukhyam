@@ -3,6 +3,7 @@ import 'package:progress_dialog/progress_dialog.dart';
 import 'package:saukhyam/screens/HomePage.dart';
 import 'package:saukhyam/screens/LoginPage.dart';
 import 'package:saukhyam/services/auth_service.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 Widget AppBarCustom(BuildContext context)
 {
@@ -11,6 +12,7 @@ Widget AppBarCustom(BuildContext context)
     centerTitle: true,
     title: GestureDetector(
         onTap: (){
+
           Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=> HomePage()));
         },
   child: Image.asset('assets/logo.png',height: MediaQuery.of(context).size.height/35,),),
@@ -39,10 +41,12 @@ Widget AppBarCustom(BuildContext context)
         await pr.show();
         var ress = await logout();
         pr.hide();
-
+        final prefs = await SharedPreferences.getInstance();
+        final email = prefs.setString('email','');
+        final pass = prefs.setString('pass','');
         Navigator.of(context).push(MaterialPageRoute(builder: (context)=>LGnew()));
 
-      }, icon: Icon(Icons.person,color: Colors.white,), label: Text(''))
+      }, icon: Icon(Icons.remove_circle,color: Colors.white,), label: Text('Logout',style: TextStyle(color: Colors.white),))
     ],
   );
 

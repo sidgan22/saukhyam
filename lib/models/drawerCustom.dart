@@ -10,6 +10,7 @@ class DrawerC extends StatefulWidget {
 class _DrawerCState extends State<DrawerC> {
   @override
   Widget build(BuildContext context) {
+//    HomePg hpg = new HomePg();
     return SizedBox(
       width: 240.0,
       height: MediaQuery.of(context).size.height,
@@ -34,8 +35,12 @@ class _DrawerCState extends State<DrawerC> {
             title: Text("${textUtils.titles[index-1]}"),
             leading: AssetUtils.drawer_icons[index-1],
             onTap: (){
+
+              controllerhomeyt.pause();
+
               Navigator.pop(context);
               Navigator.pushReplacementNamed(context, "/$index");
+
             },
           );
         })));}

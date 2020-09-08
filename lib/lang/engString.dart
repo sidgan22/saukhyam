@@ -93,6 +93,6 @@ class StringUtilsEn{
     'Products',
     'FAQ',
     'Contact Us',
-    'Language'
+    'Language',
   ];
 }

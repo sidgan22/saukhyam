@@ -19,19 +19,19 @@ class _AbtPgState extends State<AbtPg> {
       body: Stack(
         children: [
           Padding(
-            padding:  EdgeInsets.only(left:20.0,top:30.0,right: 20.0,bottom:10.0),
+            padding:  EdgeInsets.only(left:20.0,top:10.0,right: 20.0,bottom:10.0),
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(10.0),
                   child: Text(textUtils.titles[0],style:TextStyle(fontSize: MediaQuery.of(context).size.width/14,fontFamily: 'Montserrat',fontWeight: FontWeight.bold)),
                 ),
-                Divider()
+                Divider(thickness: 2,)
               ],
             ),
           ),
           Padding(
-            padding:  EdgeInsets.only(top: MediaQuery.of(context).size.height/10),
+            padding:  EdgeInsets.only(top: MediaQuery.of(context).size.height/8),
             child: ListView.builder(
                 itemCount: textUtils.cont.length,
                 itemBuilder: (context,index){
