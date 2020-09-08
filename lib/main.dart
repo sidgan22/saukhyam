@@ -57,49 +57,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMixin{
   AnimationController controller;
   Animation _animation;
-  checkSavedPass()
-  async {
-
-    final prefs = await SharedPreferences.getInstance();
-    final email = prefs.getString('email');
-    final pass = prefs.getString('pass');
-    if(email=='')
-      {
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) => LGnew()));
-      }
-    else
-      {
-        ProgressDialog pr;
-        pr = new ProgressDialog(context,type: ProgressDialogType.Normal, isDismissible: false, showLogs: false);
-        pr.style(
-            message: 'Logging In...',
-            borderRadius: 10.0,
-            backgroundColor: Colors.white,
-            progressWidget: CircularProgressIndicator(),
-            elevation: 10.0,
-            insetAnimCurve: Curves.easeInOut,
-            progress: 0.0,
-            maxProgress: 100.0,
-            progressTextStyle: TextStyle(
-                color: Colors.black, fontSize: 13.0, fontWeight: FontWeight.w400),
-            messageTextStyle: TextStyle(
-                color: Colors.black, fontSize: 19.0, fontWeight: FontWeight.w600)
-        );
-        await pr.show();
-
-
-        await login(email, pass);
-
-
-        pr.hide();
-
-        Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context)=> HomePg()), (route) => false);
-
-
-
-
-      }
-  }
 
 //
 //  Navigator.pushReplacement(
@@ -107,7 +64,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
 //  MaterialPageRoute(builder: (context) => LGnew()));
   onDoneLoading() async {
     await checkLang();
-    await checkSavedPass();
+
 
   }
   checkLang()
@@ -119,7 +76,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
       {
         Navigator.pushReplacement(
             context,
-            MaterialPageRoute(builder: (context) => LangSel()));
+            MaterialPageRoute(builder: (context) => LangSel1()));
       }
     else
       {
@@ -137,6 +94,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
           }
         }
       }
+    Navigator.of(context).push(MaterialPageRoute(builder: (context)=> LGnew()));
   }
   @override
   void initState() {

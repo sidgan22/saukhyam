@@ -24,9 +24,57 @@ class _LGnewState extends State<LGnew> {
   final _formKey = GlobalKey<FormState>();
   ProgressDialog pr;
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    checkSavedPass();
+  }
+  checkSavedPass()
+  async {
+
+    final prefs = await SharedPreferences.getInstance();
+    final email = prefs.getString('email');
+    final pass = prefs.getString('pass');
+    if(email=='')
+    {
+    }
+    else
+    {
+      ProgressDialog pr,pr1;
+      pr1 = new ProgressDialog(context,type: ProgressDialogType.Normal, isDismissible: false, showLogs: false);
+      pr1.style(
+          message: 'Checking previous login...',
+          borderRadius: 10.0,
+          backgroundColor: Colors.white,
+          progressWidget: CircularProgressIndicator(),
+          elevation: 10.0,
+          insetAnimCurve: Curves.easeInOut,
+          progress: 0.0,
+          maxProgress: 100.0,
+          progressTextStyle: TextStyle(
+              color: Colors.black, fontSize: 13.0, fontWeight: FontWeight.w400),
+          messageTextStyle: TextStyle(
+              color: Colors.black, fontSize: 19.0, fontWeight: FontWeight.w600)
+      );
+      await pr1.show();
+
+
+      var res = await login(email, pass);
+
+
+      pr1.hide();
+      if(res['result']==true)
+        Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context)=> HomePg()), (route) => false);
+
+
+
+
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     MediaQueryData l;
-    pr = new ProgressDialog(context);
     pr = new ProgressDialog(context,type: ProgressDialogType.Normal, isDismissible: false, showLogs: false);
     pr.style(
         message: 'Logging In...',
